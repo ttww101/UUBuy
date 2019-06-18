@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1800B2F222B0F0C700D793F4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800B2F122B0F0C700D793F4 /* CollectionViewController.swift */; };
+		1800B2F222B0F0C700D793F4 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800B2F122B0F0C700D793F4 /* HomeCollectionViewController.swift */; };
 		1800B2F422B0F0E800D793F4 /* GoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800B2F322B0F0E800D793F4 /* GoodCollectionViewCell.swift */; };
 		1800B2F622B1E6BE00D793F4 /* MyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800B2F522B1E6BE00D793F4 /* MyExtension.swift */; };
 		1844753922AFA630000A2391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844753822AFA630000A2391 /* AppDelegate.swift */; };
@@ -21,11 +21,41 @@
 		1844755522B09210000A2391 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844755422B09210000A2391 /* UserModel.swift */; };
 		1844755722B09235000A2391 /* GoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844755622B09235000A2391 /* GoodsModel.swift */; };
 		1844755A22B0937A000A2391 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844755922B0937A000A2391 /* Network.swift */; };
+		184E86F522B205E20050C0BD /* MyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86F422B205E20050C0BD /* MyService.swift */; };
+		184E86F722B21C6E0050C0BD /* HomeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86F622B21C6E0050C0BD /* HomeLayout.swift */; };
+		184E86F922B21FF10050C0BD /* DecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86F822B21FF10050C0BD /* DecorationView.swift */; };
+		184E86FB22B24DC50050C0BD /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86FA22B24DC50050C0BD /* MeViewController.swift */; };
+		184E86FD22B256E40050C0BD /* MeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86FC22B256E40050C0BD /* MeTableView.swift */; };
+		184E86FF22B344AB0050C0BD /* GoodDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86FE22B344AA0050C0BD /* GoodDetailTableViewController.swift */; };
+		184E870222B3A6F70050C0BD /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E870122B3A6F70050C0BD /* CartTableViewController.swift */; };
+		184E870422B3ACC40050C0BD /* NotifcationItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E870322B3ACC40050C0BD /* NotifcationItemTableViewCell.swift */; };
+		1898A70822B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70722B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift */; };
+		1898A70A22B7406B00476ED0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70922B7406B00476ED0 /* BannerCollectionViewCell.swift */; };
+		1898A70C22B74BD300476ED0 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70B22B74BD300476ED0 /* ShopViewController.swift */; };
+		1898A70E22B74BE800476ED0 /* OneDollarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70D22B74BE800476ED0 /* OneDollarViewController.swift */; };
+		1898A71022B765D700476ED0 /* NotificationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70F22B765D700476ED0 /* NotificationHeaderView.swift */; };
+		1898A71222B76A2800476ED0 /* NotificationSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A71122B76A2800476ED0 /* NotificationSwitchTableViewCell.swift */; };
+		1898A71422B78BA100476ED0 /* ShopCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A71322B78BA000476ED0 /* ShopCollectionView.swift */; };
+		1898A71622B8772A00476ED0 /* SearchableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A71522B8772A00476ED0 /* SearchableNavigationController.swift */; };
+		18F30AE022B3AF4200514806 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F30ADF22B3AF4200514806 /* NotificationTableViewController.swift */; };
 		C36EEA56E91FD1A8991DB1B0 /* Pods_UUBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A343CAECDD80EA275B95EB3 /* Pods_UUBuy.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1898A74722B87D1F00476ED0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		1800B2F122B0F0C700D793F4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1800B2F122B0F0C700D793F4 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		1800B2F322B0F0E800D793F4 /* GoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		1800B2F522B1E6BE00D793F4 /* MyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtension.swift; sourceTree = "<group>"; };
 		1844753522AFA630000A2391 /* UUBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +71,24 @@
 		1844755422B09210000A2391 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1844755622B09235000A2391 /* GoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsModel.swift; sourceTree = "<group>"; };
 		1844755922B0937A000A2391 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		184E86F422B205E20050C0BD /* MyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyService.swift; sourceTree = "<group>"; };
+		184E86F622B21C6E0050C0BD /* HomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayout.swift; sourceTree = "<group>"; };
+		184E86F822B21FF10050C0BD /* DecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationView.swift; sourceTree = "<group>"; };
+		184E86FA22B24DC50050C0BD /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		184E86FC22B256E40050C0BD /* MeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableView.swift; sourceTree = "<group>"; };
+		184E86FE22B344AA0050C0BD /* GoodDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailTableViewController.swift; sourceTree = "<group>"; };
+		184E870122B3A6F70050C0BD /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
+		184E870322B3ACC40050C0BD /* NotifcationItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifcationItemTableViewCell.swift; sourceTree = "<group>"; };
+		1898A70722B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		1898A70922B7406B00476ED0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		1898A70B22B74BD300476ED0 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		1898A70D22B74BE800476ED0 /* OneDollarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDollarViewController.swift; sourceTree = "<group>"; };
+		1898A70F22B765D700476ED0 /* NotificationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHeaderView.swift; sourceTree = "<group>"; };
+		1898A71122B76A2800476ED0 /* NotificationSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		1898A71322B78BA000476ED0 /* ShopCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionView.swift; sourceTree = "<group>"; };
+		1898A71522B8772A00476ED0 /* SearchableNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableNavigationController.swift; sourceTree = "<group>"; };
+		1898A71722B87AE100476ED0 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		18F30ADF22B3AF4200514806 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		59B10191443E1E1630E150AD /* Pods-UUBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UUBuy.debug.xcconfig"; path = "Target Support Files/Pods-UUBuy/Pods-UUBuy.debug.xcconfig"; sourceTree = "<group>"; };
 		5A343CAECDD80EA275B95EB3 /* Pods_UUBuy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UUBuy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57B5807E0BC428FBE3E8BDF /* Pods-UUBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UUBuy.release.xcconfig"; path = "Target Support Files/Pods-UUBuy/Pods-UUBuy.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +109,7 @@
 		1844752C22AFA630000A2391 = {
 			isa = PBXGroup;
 			children = (
+				1898A71722B87AE100476ED0 /* MyPlayground.playground */,
 				1844753722AFA630000A2391 /* UUBuy */,
 				1844753622AFA630000A2391 /* Products */,
 				F9566AC39746D62F7F4D61A3 /* Pods */,
@@ -98,8 +147,15 @@
 		1844754A22B08F60000A2391 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1800B2F122B0F0C700D793F4 /* CollectionViewController.swift */,
+				1898A71522B8772A00476ED0 /* SearchableNavigationController.swift */,
+				1898A70B22B74BD300476ED0 /* ShopViewController.swift */,
+				1898A70D22B74BE800476ED0 /* OneDollarViewController.swift */,
+				18F30ADF22B3AF4200514806 /* NotificationTableViewController.swift */,
+				184E870122B3A6F70050C0BD /* CartTableViewController.swift */,
+				184E86FA22B24DC50050C0BD /* MeViewController.swift */,
+				1800B2F122B0F0C700D793F4 /* HomeCollectionViewController.swift */,
 				1844754E22B0913C000A2391 /* TableViewController.swift */,
+				184E86FE22B344AA0050C0BD /* GoodDetailTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -125,7 +181,16 @@
 		1844754D22B08F87000A2391 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1898A71322B78BA000476ED0 /* ShopCollectionView.swift */,
+				1898A71122B76A2800476ED0 /* NotificationSwitchTableViewCell.swift */,
+				1898A70F22B765D700476ED0 /* NotificationHeaderView.swift */,
+				1898A70922B7406B00476ED0 /* BannerCollectionViewCell.swift */,
+				184E870322B3ACC40050C0BD /* NotifcationItemTableViewCell.swift */,
+				184E86FC22B256E40050C0BD /* MeTableView.swift */,
+				184E86F822B21FF10050C0BD /* DecorationView.swift */,
+				184E86F622B21C6E0050C0BD /* HomeLayout.swift */,
 				1800B2F322B0F0E800D793F4 /* GoodCollectionViewCell.swift */,
+				1898A70722B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,6 +198,7 @@
 		1844755822B09355000A2391 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				184E86F422B205E20050C0BD /* MyService.swift */,
 				1844755922B0937A000A2391 /* Network.swift */,
 			);
 			path = Service;
@@ -167,6 +233,7 @@
 				1844753222AFA630000A2391 /* Frameworks */,
 				1844753322AFA630000A2391 /* Resources */,
 				12AAA10B83730B9AE1F7A6EE /* [CP] Embed Pods Frameworks */,
+				1898A74722B87D1F00476ED0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,28 +297,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UUBuy/Pods-UUBuy-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-UUBuy/Pods-UUBuy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-UUBuy/Pods-UUBuy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -287,17 +337,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1800B2F222B0F0C700D793F4 /* CollectionViewController.swift in Sources */,
+				1898A71222B76A2800476ED0 /* NotificationSwitchTableViewCell.swift in Sources */,
+				184E86FB22B24DC50050C0BD /* MeViewController.swift in Sources */,
+				184E86FF22B344AB0050C0BD /* GoodDetailTableViewController.swift in Sources */,
+				184E86FD22B256E40050C0BD /* MeTableView.swift in Sources */,
+				1800B2F222B0F0C700D793F4 /* HomeCollectionViewController.swift in Sources */,
+				184E870422B3ACC40050C0BD /* NotifcationItemTableViewCell.swift in Sources */,
 				1844755122B091BE000A2391 /* GoodModel.swift in Sources */,
 				1844753B22AFA630000A2391 /* ViewController.swift in Sources */,
 				1844755A22B0937A000A2391 /* Network.swift in Sources */,
+				184E870222B3A6F70050C0BD /* CartTableViewController.swift in Sources */,
 				1844755322B091E7000A2391 /* OrderModel.swift in Sources */,
+				1898A70822B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift in Sources */,
+				18F30AE022B3AF4200514806 /* NotificationTableViewController.swift in Sources */,
+				1898A70A22B7406B00476ED0 /* BannerCollectionViewCell.swift in Sources */,
+				1898A71622B8772A00476ED0 /* SearchableNavigationController.swift in Sources */,
 				1800B2F422B0F0E800D793F4 /* GoodCollectionViewCell.swift in Sources */,
+				1898A71022B765D700476ED0 /* NotificationHeaderView.swift in Sources */,
 				1844755722B09235000A2391 /* GoodsModel.swift in Sources */,
+				184E86F722B21C6E0050C0BD /* HomeLayout.swift in Sources */,
 				1844754F22B0913C000A2391 /* TableViewController.swift in Sources */,
 				1844755522B09210000A2391 /* UserModel.swift in Sources */,
+				1898A71422B78BA100476ED0 /* ShopCollectionView.swift in Sources */,
+				184E86F522B205E20050C0BD /* MyService.swift in Sources */,
 				1844753922AFA630000A2391 /* AppDelegate.swift in Sources */,
+				184E86F922B21FF10050C0BD /* DecorationView.swift in Sources */,
+				1898A70C22B74BD300476ED0 /* ShopViewController.swift in Sources */,
 				1800B2F622B1E6BE00D793F4 /* MyExtension.swift in Sources */,
+				1898A70E22B74BE800476ED0 /* OneDollarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59B10191443E1E1630E150AD /* Pods-UUBuy.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7276CMQ83;
@@ -462,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D57B5807E0BC428FBE3E8BDF /* Pods-UUBuy.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7276CMQ83;

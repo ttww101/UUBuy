@@ -38,3 +38,15 @@ extension UIColor {
     }
 }
 
+func getGradientImage(width: CGFloat, height: CGFloat) -> UIImage {
+    let gradientLayer = CAGradientLayer()
+    gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    gradientLayer.colors = [UIColor(hex: 0xffbd7a)?.cgColor, UIColor(hex: 0xff8300)?.cgColor]
+    gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+    gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+    UIGraphicsBeginImageContext(gradientLayer.frame.size)
+    gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+    let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return outputImage!
+}

@@ -12,5 +12,11 @@ target 'UUBuy' do
   pod 'RxSwift', '~> 5.0'
   pod 'RxCocoa', '~> 5.0'
   pod 'Alamofire'
+  pod 'Moya', '~> 13.0'
+  pod 'YYKit'
+  pod 'ImageSlideshow', '~> 1.8'
+  pod 'ImageSlideshow/Kingfisher'
+  pod 'SnappingStepper', '~> 3.0.0'
+  pod 'JXSegmentedView'
 
 end
