@@ -8,15 +8,19 @@
 
 import UIKit
 
-class NotificationTableViewController: UIViewController {
+class NotificationViewController: UIViewController {
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "通知"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
         view.backgroundColor = UIColor(hex: 0xF0F0F0)
-
-        let notificationTableView = NotificationTableView()
+        
+        let notificationTableView = NotificationTableView(frame: CGRect.zero, style: .grouped)
         view.addSubview(notificationTableView)
         notificationTableView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(10)
@@ -38,7 +42,7 @@ class NotificationTableView : UITableView, UITableViewDelegate, UITableViewDataS
         dataSource = self
         delegate = self
         let notificationHeaderView = NotificationHeaderView()
-        notificationHeaderView.frame = CGRect(x: 0, y: 0, width: 300, height: UIScreen.main.bounds.width*0.18)
+        notificationHeaderView.frame = CGRect(x: 0, y: 0, width: 300, height: 300*0.18+20)
         tableHeaderView = notificationHeaderView
         
         allowsSelection = false
@@ -55,6 +59,9 @@ class NotificationTableView : UITableView, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1{
+            return 20
+        }
         return 1
     }
     
@@ -63,13 +70,12 @@ class NotificationTableView : UITableView, UITableViewDelegate, UITableViewDataS
         let section = indexPath.section
         if section == 0 {
             let cell = dequeueReusableCell(withClass: NotificationSwitchTableViewCell.self)
-            
             return cell
         }
         
         let cell = dequeueReusableCell(withClass: NotifcationItemTableViewCell.self)
         
-        cell.titleLabel.text = "最強活動說明"
+        cell.titleLabel.text = "最强活动说明"
         cell.contentLabel.text = "今日下五"
         cell.dateLabel.text = "2019_06_09"
         return cell
@@ -80,33 +86,37 @@ class NotificationTableView : UITableView, UITableViewDelegate, UITableViewDataS
             let notificationHeader = NotificationHeader()
             return notificationHeader
         }
-
-        return nil
+        
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        if section == 1 {
+            return 60
+        }
+        return 10
     }
 }
 
 class NotificationHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        backgroundColor = .white
+        //        backgroundColor = .white
         
         let v = UIView()
-
-//        v.roundCorners([.topRight, .topRight], radius: 10)
+        
+        //        v.roundCorners([.topRight, .topRight], radius: 10)
         v.backgroundColor = .clear
         v.layer.backgroundColor = UIColor.white.cgColor
+        v.layer.cornerRadius = 5
+        v.clipsToBounds = true
         addSubview(v)
         v.snp.makeConstraints { (make) in
             make.top.equalTo(self).offset(10)
             make.left.right.bottom.equalTo(self)
         }
-
-
         
+        drawLine(startX: 10, toEndingX: 10, startingY: 14+4, toEndingY: 30+4, ofColor: UIColor(hex: 0xFFC101), widthOfLine: 5, inView: v)
         
         let label = UILabel()
         label.text = "通知"
@@ -115,9 +125,18 @@ class NotificationHeader: UIView {
         addSubview(label)
         
         label.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(30)
-            make.centerY.equalTo(self).offset(10)
+            make.left.equalTo(self).offset(20)
+            make.centerY.equalTo(self).offset(7)
         }
+        
+        let pathV = UIView()
+        pathV.backgroundColor = .white
+        addSubview(pathV)
+        pathV.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.bottom).offset(-10)
+            make.left.right.bottom.equalTo(self)
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

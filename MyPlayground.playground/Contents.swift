@@ -1,6 +1,8 @@
 import UIKit
 
+let timer = Timer(timeInterval: 1, repeats: true) { _ in
+    print("count")
+}
 
-var str = "Hello, playground"
-
-
+RunLoop.current.add(timer, forMode: .default)
+timer.fire()

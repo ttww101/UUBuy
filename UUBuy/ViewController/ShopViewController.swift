@@ -10,7 +10,7 @@ import UIKit
 import JXSegmentedView
 import Moya
 
-class ShopViewController: UIViewController, JXSegmentedViewDelegate {
+class ShopViewController: UIViewController, JXSegmentedViewDelegate, UICollectionViewDelegate {
     let segmentedDataSource = JXSegmentedTitleDataSource()
     let segmentedDataSource1 = JXSegmentedTitleDataSource()
     let segmentView1 = JXSegmentedView()
@@ -18,9 +18,16 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate {
     var mainId = 0
     var goods: [(String, String, [(String, Int)])] = []
     var collectionView: ShopCollectionView! = nil
+    
+    public override func rt_navigationBarClass() -> AnyClass! {
+        return MyNavavigationBar.self
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         let navBar = MyNavavigationBar()
         view.addSubview(navBar)
@@ -29,7 +36,7 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate {
         segmentView.delegate = self
         view.addSubview(segmentView)
         segmentView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.snp.topMargin)
+            make.top.equalTo(view.snp.topMargin).offset(26)
             make.left.right.equalTo(view)
             make.height.equalTo(30)
         }
@@ -50,6 +57,7 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate {
                 segmentView.dataSource = self.segmentedDataSource
                 self.segmentedDataSource.reloadData(selectedIndex: 0)
                 segmentView.reloadData()
+                self.segmentedView(segmentView, didClickSelectedItemAt: 0)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -67,26 +75,6 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate {
             make.height.equalTo(30)
         }
         
-//        provider.request(.getCatelory) { (result) in
-//            switch result {
-//            case .success(let moyaResponse):
-//                let data = moyaResponse.data // 获取到的数据
-//                let goods = getCatelory(data: data)
-//                var attr: [String] = []
-//                for good in goods {
-//                    attr.append(good.0)
-//                }
-//                self.segmentedDataSource.isTitleColorGradientEnabled = true
-//
-//                self.segmentedDataSource.titles = attr
-//                segmentView1.dataSource = self.segmentedDataSource
-//                self.segmentedDataSource.reloadData(selectedIndex: 0)
-//                segmentView1.reloadData()
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-        
         let indicator1 = JXSegmentedIndicatorLineView()
         indicator1.indicatorWidth = 20
         segmentView1.indicators = [indicator1]
@@ -103,6 +91,7 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate {
             make.bottom.equalTo(view.snp.bottomMargin)
         }
         
+        collectionView.delegate = self
     }
     
     func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) {
@@ -144,8 +133,26 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate {
             self.segmentView1.dataSource = self.segmentedDataSource
             self.segmentedDataSource.reloadData(selectedIndex: 0)
             self.segmentView1.reloadData()
+            self.segmentView1.selectItemAt(index: 0)
+            if first {
+                first = false
+                self.segmentedView(self.segmentView1, didClickSelectedItemAt: 0)
+            }
+            
         }
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = indexPath.item
+        let vc = GoodDetailTableViewController()
+        
+        vc.model = self.collectionView.goodModels[row]
+        vc.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(vc)
+    }
+    
+    var first = true
 
 }

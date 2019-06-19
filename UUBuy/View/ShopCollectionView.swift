@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-class ShopCollectionView: UICollectionView, UICollectionViewDataSource {
+class ShopCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -19,10 +19,12 @@ class ShopCollectionView: UICollectionView, UICollectionViewDataSource {
     }
     */
     var ids: [Int] = []
+    var goodModels: [GoodModel?] = []
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         dataSource = self
+        delegate = self
         register(cellWithClass: GoodCollectionViewCell.self)
         backgroundColor = UIColor(hex: 0xF0F0F0)
     }
@@ -37,6 +39,9 @@ class ShopCollectionView: UICollectionView, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        ids.map { (id) in
+            goodModels.append(nil)
+        }
         return ids.count
     }
     
@@ -56,6 +61,7 @@ class ShopCollectionView: UICollectionView, UICollectionViewDataSource {
                 //                let statusCode = moyaResponse.statusCode // 请求状态： 200, 401, 500, etc
                 
                 let good = getProduct(data: data)
+                self.goodModels[item] = good
                 cell.label.text = good.name
                 cell.priceLabel.text = good.price
                 //                let imgData = try? Data(contentsOf: URL(string: good.bigImgs[0])!)

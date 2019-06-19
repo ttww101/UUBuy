@@ -11,10 +11,11 @@ import Moya
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         let MEMORY_CAPACITY = 4 * 1024 * 1024
         let DISK_CAPACITY =  20 * 1024 * 1024
         
@@ -22,28 +23,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         URLCache.shared = cache
         
         
-//         set rootViewController
+        //         set rootViewController
         window = UIWindow()
         self.window = UIWindow()
         self.window?.backgroundColor = .white
         
         let layout = HomeLayout()
-//        let homeViewController = HomeCollectionViewController(collectionViewLayout: layout)
-        let homeViewController = UINavigationController(rootViewController: HomeCollectionViewController(collectionViewLayout: layout))
+        //        let homeViewController = HomeCollectionViewController(collectionViewLayout: layout)
+        let homeViewController = SearchableNavigationController(rootViewController: HomeCollectionViewController(collectionViewLayout: layout))
         homeViewController.tabBarItem = UITabBarItem(title: "首页", image: UIImage(named: "buy_icon_h02"), selectedImage: UIImage(named: "buy_icon_h01"))
-//        let shopViewController = UINavigationController(rootViewController: ShopViewController())
-        let shopViewController = UINavigationController(rootViewController: ShopViewController())
+        //        let shopViewController = UINavigationController(rootViewController: ShopViewController())
+        let shopViewController = SearchableNavigationController(rootViewController: ShopViewController())
         shopViewController.tabBarItem = UITabBarItem(title: "商城", image: UIImage(named: "buy_icon_b02"), selectedImage: UIImage(named: "buy_icon_b01"))
-        let oneDollarViewController = SearchableNavigationController(rootViewController: CartTableViewController())
-//        let oneDollarViewController = OneDollarViewController()
+        let oneDollarLayout = OneDollarLayout()
+        let oneDollarVC = OneDollarViewController(collectionViewLayout: oneDollarLayout)
+        let oneDollarViewController = SearchableNavigationController(rootViewController: oneDollarVC)
         oneDollarViewController.tabBarItem = UITabBarItem(title: "一元", image: UIImage(named: "buy_icon_m02"), selectedImage: UIImage(named: "buy_icon_m01"))
-        let notificationViewController = UINavigationController(rootViewController: NotificationTableViewController())
+        let notificationViewController = UINavigationController(rootViewController: NotificationViewController())
+        notificationViewController.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         notificationViewController.tabBarItem = UITabBarItem(title: "通知", image: UIImage(named: "buy_icon_l02"), selectedImage: UIImage(named: "buy_icon_l01"))
         
         let navController = UINavigationController(rootViewController: MeViewController())
-//        navController.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
+        //        navController.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navController.navigationBar.shadowImage = UIImage()
+        //        navController.navigationBar.shadowImage = UIImage()
         navController.navigationBar.isTranslucent = true
         navController.view.backgroundColor = .clear
         
@@ -62,6 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         return true
     }
-
+    
 }
 

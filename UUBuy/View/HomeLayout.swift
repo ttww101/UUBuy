@@ -8,26 +8,28 @@
 
 import UIKit
 
-class HomeLayout: UICollectionViewFlowLayout, UICollectionViewDelegateFlowLayout {
+class HomeLayout: UICollectionViewFlowLayout {
 
     override func prepare() {
         super.prepare()
-        itemSize = CGSize(width: 80, height: 130)
+        itemSize = CGSize(width: 75, height: 130)
         minimumLineSpacing = 5
-        sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5);
+        sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0);
         register(DecorationView.self, forDecorationViewOfKind: "decorationView")
     }
     
     override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let section = indexPath.section
+
         let attrs = UICollectionViewLayoutAttributes(forDecorationViewOfKind: "decorationView", with: indexPath)
         if elementKind == "decorationView" {
-            print("dfksljka")
-            attrs.frame = CGRect(x: 0, y: 0, width: width, height: 200)
+            if section == 1 {
+                attrs.frame = CGRect(x: 5, y: 190, width: width - 5 * 2, height: 240)
+            } else {
+                attrs.frame = CGRect(x: 5, y: 470, width: width - 5 * 2, height: 240)
+            }
             attrs.zIndex = -1
         }
-//        let numberOfItems = collectionView?.numberOfItems(inSection: indexPath.section)
-//        let itemsPerRow = 4
-//        let rows = (numberOfItems + itemsPerRow - 1) / itemsPerRow
         
         return attrs
     }
@@ -38,15 +40,19 @@ class HomeLayout: UICollectionViewFlowLayout, UICollectionViewDelegateFlowLayout
         let decorationAttrs = layoutAttributesForDecorationView(ofKind: "decorationView", at: IndexPath(item: 0, section: 1))
         if let decorationAttrs = decorationAttrs {
             if rect.intersects(decorationAttrs.frame) {
-//                attrs.append(decorationAttrs)
+                attrs.append(decorationAttrs)
+            }
+        }
+        
+        let decorationAttrs1 = layoutAttributesForDecorationView(ofKind: "decorationView", at: IndexPath(item: 0, section: 2))
+        decorationAttrs1?.frame = CGRect(x: 5, y: 475, width: width - 5 * 2, height: 240)
+        if let decorationAttrs1 = decorationAttrs1 {
+            if rect.intersects(decorationAttrs1.frame) {
+                attrs.append(decorationAttrs1)
             }
         }
         
         return attrs
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 500, height: 500)
     }
     
 }

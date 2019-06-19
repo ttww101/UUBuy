@@ -11,7 +11,7 @@ import UIKit
 class HomeHeaderCollectionReusableView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        backgroundColor = .yellow
+        //        backgroundColor = .yellow
         
         let decorationView = UIView()
         decorationView.layer.cornerRadius = 12
@@ -24,7 +24,7 @@ class HomeHeaderCollectionReusableView: UICollectionReusableView {
             make.height.equalTo(self).multipliedBy(0.8)
         }
         
-        label.text = "明星單品"
+        label.text = "明星单品"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor(hex: 0xFF574A)
         addSubview(label)

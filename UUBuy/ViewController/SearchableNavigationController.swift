@@ -7,37 +7,151 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import RTRootNavigationController
+import Moya
 
-public class SearchableNavigationController: UINavigationController {
-
+public class SearchableNavigationController: RTRootNavigationController {
     override public func viewDidLoad() {
         super.viewDidLoad()
-
-//        navigationBar = MyNavavigationBar()
-        navigationBar.setBackgroundImage(getGradientImage(width: width, height: 40), for: .default)
-        setValue(MyNavavigationBar(), forKey: "navigationBar")
-//        navigationBar.isTranslucent = true
-//        view.backgroundColor = .clear
+        
+        //        let textField = SearchTextField()
+        //        textField.frame = CGRect(x: 10, y: 30, width: 300, height: 35)
+        //        textField.placeholder = "明星商品"
+        //
+        //        let searchImgView = UIImageView(named: "buy_s")
+        //        textField.addSubview(searchImgView)
+        //        textField.contentVerticalAlignment = .center
+        //        searchImgView.snp.makeConstraints { (make) in
+        //            make.centerY.equalTo(textField)
+        //            make.width.height.equalTo(18)
+        //            make.left.equalTo(textField).offset(10)
+        //        }
+        //        textField.addSubview(searchImgView)
+        //        view.addSubview(textField)
+        //
+        //        let btn = UIButton()
+        //        view.addSubview(btn)
+        //
+        //        btn.setImage(UIImage(named: "buy_car"), for: .normal)
+        //        btn.snp.makeConstraints { (make) in
+        //            make.centerY.equalTo(textField)
+        //            make.width.height.equalTo(25)
+        //            make.right.equalTo(view).offset(-25)
+        //        }
+        //        btn.rx.tap.subscribe(onNext: {
+        //            let cartTableViewController = CartTableViewController()
+        //            cartTableViewController.hidesBottomBarWhenPushed = true
+        //            self.pushViewController(cartTableViewController)
+        //        })
     }
     
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-class MyNavavigationBar: UINavigationBar {
+class MyNavavigationBar: UINavigationBar, UITextFieldDelegate {
+    var customHeight : CGFloat = 90
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let keyword = textField.text!
+        let provider = MoyaProvider<API>(plugins: [MoyaCacheablePlugin()])
+        provider.request(.searchGood(keyword: keyword)) { (result) in
+            switch result {
+            case .success(let moyaResponse):
+                let data = moyaResponse.data // 获取到的数据
+                
+                let goods = parseGoods(data: data)
+                var arr: [Int] = []
+                for i in goods {
+                    arr.append(i.1)
+                }
+                let searchResultViewController = SearchResultViewController()
+                searchResultViewController.ids = arr
+                let navigationController = self.viewController! as! UINavigationController
+                navigationController.pushViewController(searchResultViewController)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        return true
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isTranslucent = true
+        
+        let textField = SearchTextField()
+        textField.frame = CGRect(x: 10, y: 30, width: 300, height: 35)
+        textField.placeholder = "明星商品"
+        
+        let searchImgView = UIImageView(named: "buy_s")
+        textField.addSubview(searchImgView)
+        textField.contentVerticalAlignment = .center
+        searchImgView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(textField)
+            make.width.height.equalTo(18)
+            make.left.equalTo(textField).offset(10)
+        }
+        textField.delegate = self
+        textField.addSubview(searchImgView)
+        addSubview(textField)
+        
+        let btn = UIButton()
+        addSubview(btn)
+        
+        btn.setImage(UIImage(named: "buy_car"), for: .normal)
+        btn.snp.makeConstraints { (make) in
+            make.centerY.equalTo(textField)
+            make.width.height.equalTo(25)
+            make.right.equalTo(self).offset(-25)
+        }
+        btn.rx.tap.subscribe(onNext: {
+            let cartTableViewController = CartTableViewController()
+            cartTableViewController.hidesBottomBarWhenPushed = true
+            let navController = self.viewController as! UINavigationController
+            navController.pushViewController(cartTableViewController)
+        })
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var size = super.sizeThatFits(size)
-        size.height += 44
-        return size
+        
+        return CGSize(width: UIScreen.main.bounds.width, height: customHeight)
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        frame = CGRect(x: frame.origin.x, y:  0, width: frame.size.width, height: customHeight)
+        
+        // title position (statusbar height / 2)
+        setTitleVerticalPositionAdjustment(-10, for: UIBarMetrics.default)
+        
+        for subview in self.subviews {
+            var stringFromClass = NSStringFromClass(subview.classForCoder)
+            if stringFromClass.contains("BarBackground") {
+                //                subview.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: customHeight)
+                //                subview.backgroundColor = .yellow
+                
+            }
+            
+            stringFromClass = NSStringFromClass(subview.classForCoder)
+            if stringFromClass.contains("BarContent") {
+                
+                subview.frame = CGRect(x: subview.frame.origin.x, y: 0, width: subview.frame.width, height: customHeight)
+                
+                subview.backgroundColor = UIColor(red: 20/255, green: 20/255, blue: 20/255, alpha: 0.4)
+                let image = UIImage(named: "tabbar-image")
+                let imageView = UIImageView(image: image)
+                imageView.frame = subview.frame
+                subview.addSubview(imageView)
+                
+            }
+        }
     }
 }

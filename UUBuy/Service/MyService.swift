@@ -13,6 +13,7 @@ enum API {
     case getCatelory
     case getProducts(id: Int)
     case getProduct(id: Int)
+    case searchGood(keyword: String)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -30,7 +31,11 @@ extension API: TargetType {
             return "/category.php"
         case .getProduct:
             return "/goods.php"
+        case .searchGood:
+            return "/search.php"
         }
+        
+        
     }
     var method: Moya.Method {
         switch self {
@@ -39,6 +44,8 @@ extension API: TargetType {
         case .getProducts:
             return .get
         case .getProduct:
+            return .get
+        case .searchGood:
             return .get
         }
     }
@@ -50,12 +57,13 @@ extension API: TargetType {
             return .requestParameters(parameters: ["id":id], encoding: URLEncoding.default)
         case .getProduct(let id):
             return .requestParameters(parameters: ["id":id], encoding: URLEncoding.default)
+        case .searchGood(let keyword):
+            return .requestParameters(parameters: ["keywords":keyword], encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         return nil
-        return ["Content-type": "application/json"]
     }
 }
 // MARK: - Helpers

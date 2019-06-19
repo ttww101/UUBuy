@@ -11,7 +11,7 @@ import UIKit
 class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     var nav: UINavigationController? = nil
-    let titles = ["購買清單", "我的競標", "我的收藏", "領紅包"]
+    let titles = ["购买清单", "我的竞标", "我的收藏", "领红包"]
     let viewControllers = [UIViewController(), UIViewController(), UIViewController(), UIViewController()]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

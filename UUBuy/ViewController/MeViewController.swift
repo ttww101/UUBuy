@@ -10,20 +10,22 @@ import UIKit
 import SnapKit
 
 class MeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = grayColor
         let navImageView = UIImageView(image: getGradientImage(width: width, height: 100))
         navImageView.frame = CGRect(x: 0, y: -0, width: width, height: 175)
         view.addSubview(navImageView)
         
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationItem.title = "个人"
         
         let avatarImgView = UIImageView(named: "avatar")
         view.addSubview(avatarImgView)
-
+        
         avatarImgView.snp.makeConstraints { (make) in
             
             make.top.equalTo(view.snp.topMargin).offset(10)
@@ -65,26 +67,33 @@ class MeViewController: UIViewController {
         
         let logoutBtn = UIButton()
         logoutBtn.setTitle("退出登入", for: .normal)
+        logoutBtn.setTitleColor(.black, for: .normal)
         logoutBtn.backgroundColor = .white
-        logoutBtn.layer.cornerRadius = 10
+        logoutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        logoutBtn.layer.cornerRadius = 5
         logoutBtn.clipsToBounds = true
         view.addSubview(logoutBtn)
         logoutBtn.snp.makeConstraints { (make) in
             make.left.right.equalTo(meTableView)
             make.top.equalTo(meTableView.snp.bottom).offset(10)
-            make.height.equalTo(40)
+            make.height.equalTo(45)
         }
+        logoutBtn.layer.masksToBounds = false
+        logoutBtn.layer.shadowColor = UIColor.gray.cgColor
+        logoutBtn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        logoutBtn.layer.shadowRadius = 2
+        logoutBtn.layer.shadowOpacity = 0.2
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class DecorationView: UIView {
+class DecorationView: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .gray
+        backgroundColor = .white
+        layer.cornerRadius = 10
+        clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {

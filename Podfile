@@ -18,5 +18,7 @@ target 'UUBuy' do
   pod 'ImageSlideshow/Kingfisher'
   pod 'SnappingStepper', '~> 3.0.0'
   pod 'JXSegmentedView'
+  pod 'RTRootNavigationController'
+  pod 'SVProgressHUD'
 
 end

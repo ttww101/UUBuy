@@ -10,11 +10,6 @@ import UIKit
 import SnapKit
 
 class GoodCollectionViewCell: UICollectionViewCell {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-    
     let imageView = UIImageView()
     let label = UILabel()
     let collectBtn = UIButton()
@@ -25,54 +20,49 @@ class GoodCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .yellow
-        contentView.backgroundColor = .yellow
-//
-//        backgroundView = UIView()
-//        backgroundView?.backgroundColor = .yellow
-        
-        
         addSubview(imageView)
-        imageView.backgroundColor = .red
         imageView.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.height.equalTo(self.snp.width)
         }
         addSubview(label)
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 10)
         label.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.centerX.equalTo(self)
-            make.top.equalTo(imageView.snp.bottom)
+            make.top.equalTo(imageView.snp.bottom).offset(2)
         }
-        label.text = "積木玩具"
+        label.text = "Loading"
         
         addSubview(collectBtn)
         collectBtn.setImage(UIImage(named: "buy_slove"), for: .normal)
         collectBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 15, height: 15))
-            make.top.equalTo(label.snp.bottom)
+            make.size.equalTo(CGSize(width: 10, height: 10))
+            make.top.equalTo(label.snp.bottom).offset(2)
             make.left.equalTo(self)
         }
         
         addSubview(buyBtn)
         buyBtn.setImage(UIImage(named: "buy_scar"), for: .normal)
         buyBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 15, height: 15))
-            make.top.equalTo(label.snp.bottom)
+            make.size.equalTo(CGSize(width: 10, height: 10))
+            make.centerY.equalTo(collectBtn)
             make.right.equalTo(self)
         }
+        buyBtn.rx.tap.subscribe(onNext: {
+            
+        })
         
         addSubview(priceLabel)
         priceLabel.textColor = redColor
         priceLabel.textAlignment = .center
-        priceLabel.font = UIFont.systemFont(ofSize: 12)
+        priceLabel.font = UIFont.systemFont(ofSize: 10)
         priceLabel.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.centerX.equalTo(self)
-            make.top.equalTo(label.snp.bottom)
+            make.centerY.equalTo(collectBtn)
         }
-        priceLabel.text = "10元"
+        priceLabel.text = "Loading"
     }
     
     required init?(coder aDecoder: NSCoder) {

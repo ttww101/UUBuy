@@ -14,6 +14,7 @@ class NotificationHeaderView: UIView {
         super.init(frame: frame)
         
         let imageView = UIImageView(named: "buy_bbag")
+        imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.top.equalTo(self).offset(10)
