@@ -85,7 +85,10 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         })
         
         cell.collectBtn.rx.tap.subscribe(onNext:{
-            
+            if let good = self.goodModels[item] {
+                CollectionModel.shared.addGood(good: good)
+                SVProgressHUD.showInfo(withStatus: "加入成功")
+            }
         })
         
         let provider = MoyaProvider<API>(plugins: [MoyaCacheablePlugin()])

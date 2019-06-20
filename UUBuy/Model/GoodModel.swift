@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GoodModel: NSObject {
+class GoodModel: NSObject, Codable {
     var name: String!
     var price: String!
     var goodNo: String!

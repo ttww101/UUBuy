@@ -91,7 +91,7 @@ class OneDollarViewController: UICollectionViewController, UICollectionViewDeleg
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         print(indexPath)
         let row = indexPath.item
-        let vc = GoodDetailTableViewController()
+        let vc = OneDollarDetailTableViewController()
         vc.model = goodModels[row]
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc)

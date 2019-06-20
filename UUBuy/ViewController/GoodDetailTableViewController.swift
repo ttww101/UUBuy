@@ -15,6 +15,9 @@ let grayColor = UIColor(hex: 0xF0F0F0)
 class GoodDetailTableViewController: UITableViewController {
     var model: GoodModel?
     
+    let addToCartBtn = UIButton()
+    let buyNowBtn = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +28,6 @@ class GoodDetailTableViewController: UITableViewController {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         
-        let addToCartBtn = UIButton()
         addToCartBtn.setTitle("加入购物车", for: .normal)
         addToCartBtn.setTitleColor(.white, for: .normal)
         addToCartBtn.backgroundColor = .gray
@@ -37,12 +39,24 @@ class GoodDetailTableViewController: UITableViewController {
             make.height.equalTo(50)
             make.width.equalTo(tableView).multipliedBy(0.5)
         }
+        addToCartBtn.rx.tap.subscribe(onNext: {
+            CartModel.shared.addGood(good: self.model!)
+        })
         
-        let buyNowBtn = UIButton()
         buyNowBtn.setTitle("立即购买", for: .normal)
         buyNowBtn.setTitleColor(.white, for: .normal)
         buyNowBtn.backgroundColor = orangeColor
         tableView.addSubview(buyNowBtn)
+        buyNowBtn.rx.tap.subscribe(onNext: {
+            CartModel.shared.addGood(good: self.model!)
+            if UserModel.shared.isLogin() {
+                let cartTableViewController = CartTableViewController(style: .grouped)
+                cartTableViewController.hidesBottomBarWhenPushed = true
+                self.navigationController!.pushViewController(cartTableViewController)
+            } else {
+                LoginView.show()
+            }
+        })
         
         buyNowBtn.snp.makeConstraints { (make) in
             make.left.equalTo(addToCartBtn.snp.right)

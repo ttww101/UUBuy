@@ -12,8 +12,22 @@ import SnappingStepper
 
 class CartTableViewController: UITableViewController {
     
+    override init(style: UITableView.Style) {
+        super.init(style: .grouped)
+    }
+    
+//    convenience init() {
+//        super.init(style: .grouped)
+//    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let totalLabel = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = false
         navigationController?.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -33,12 +47,12 @@ class CartTableViewController: UITableViewController {
         }
         
         
-        let label = UILabel()
-        label.text = "合计：元"
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .black
-        fixedView.addSubview(label)
-        label.snp.makeConstraints { (make) in
+        
+        totalLabel.text = "合计：\(CartModel.shared.total())元"
+        totalLabel.font = UIFont.systemFont(ofSize: 14)
+        totalLabel.textColor = .black
+        fixedView.addSubview(totalLabel)
+        totalLabel.snp.makeConstraints { (make) in
             make.center.equalTo(fixedView)
         }
         
@@ -97,6 +111,7 @@ class CartTableViewController: UITableViewController {
         cell.deleteBtn.rx.tap.subscribe(onNext: {
             CartModel.shared.removeGood(good: good)
             self.tableView.reloadData()
+            self.totalLabel.text = "合计：\(CartModel.shared.total())元"
         })
         
         return cell
@@ -113,6 +128,7 @@ class CartTableViewController: UITableViewController {
         
         //        CartModel.shared.
         print(cell.row)
+        self.totalLabel.text = "合计：\(CartModel.shared.total())元"
     }
     
     

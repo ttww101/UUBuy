@@ -11,6 +11,9 @@
 		1800B2F422B0F0E800D793F4 /* GoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800B2F322B0F0E800D793F4 /* GoodCollectionViewCell.swift */; };
 		1800B2F622B1E6BE00D793F4 /* MyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800B2F522B1E6BE00D793F4 /* MyExtension.swift */; };
 		182B66F622BA1F22000070A0 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66F522BA1F22000070A0 /* SearchResultViewController.swift */; };
+		182B66F822BA3E59000070A0 /* OneDollarDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66F722BA3E59000070A0 /* OneDollarDetailTableViewController.swift */; };
+		182B66FA22BB4D64000070A0 /* BuyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66F922BB4D64000070A0 /* BuyListViewController.swift */; };
+		182B66FC22BB5851000070A0 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66FB22BB5851000070A0 /* CollectionModel.swift */; };
 		1844753922AFA630000A2391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844753822AFA630000A2391 /* AppDelegate.swift */; };
 		1844753B22AFA630000A2391 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844753A22AFA630000A2391 /* ViewController.swift */; };
 		1844753E22AFA630000A2391 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844753C22AFA630000A2391 /* Main.storyboard */; };
@@ -64,6 +67,9 @@
 		1800B2F322B0F0E800D793F4 /* GoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		1800B2F522B1E6BE00D793F4 /* MyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtension.swift; sourceTree = "<group>"; };
 		182B66F522BA1F22000070A0 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		182B66F722BA3E59000070A0 /* OneDollarDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDollarDetailTableViewController.swift; sourceTree = "<group>"; };
+		182B66F922BB4D64000070A0 /* BuyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyListViewController.swift; sourceTree = "<group>"; };
+		182B66FB22BB5851000070A0 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		1844753522AFA630000A2391 /* UUBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1844753822AFA630000A2391 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1844753A22AFA630000A2391 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +163,8 @@
 		1844754A22B08F60000A2391 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				182B66F922BB4D64000070A0 /* BuyListViewController.swift */,
+				182B66F722BA3E59000070A0 /* OneDollarDetailTableViewController.swift */,
 				182B66F522BA1F22000070A0 /* SearchResultViewController.swift */,
 				1898A71522B8772A00476ED0 /* SearchableNavigationController.swift */,
 				1898A70B22B74BD300476ED0 /* ShopViewController.swift */,
@@ -186,6 +194,7 @@
 				1891B71C22B9E6C5007D3DD5 /* CartModel.swift */,
 				1844755622B09235000A2391 /* GoodModel.swift */,
 				1844755222B091E7000A2391 /* OrderModel.swift */,
+				182B66FB22BB5851000070A0 /* CollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,6 +366,8 @@
 				184E86FF22B344AB0050C0BD /* GoodDetailTableViewController.swift in Sources */,
 				184E86FD22B256E40050C0BD /* MeTableView.swift in Sources */,
 				1800B2F222B0F0C700D793F4 /* HomeCollectionViewController.swift in Sources */,
+				182B66FC22BB5851000070A0 /* CollectionModel.swift in Sources */,
+				182B66FA22BB4D64000070A0 /* BuyListViewController.swift in Sources */,
 				184E870422B3ACC40050C0BD /* NotifcationItemTableViewCell.swift in Sources */,
 				1844753B22AFA630000A2391 /* ViewController.swift in Sources */,
 				1844755A22B0937A000A2391 /* Network.swift in Sources */,
@@ -381,6 +392,7 @@
 				18FF879522B8BE9800BECF3E /* SearchTextField.swift in Sources */,
 				184E86F922B21FF10050C0BD /* DecorationView.swift in Sources */,
 				1898A70C22B74BD300476ED0 /* ShopViewController.swift in Sources */,
+				182B66F822BA3E59000070A0 /* OneDollarDetailTableViewController.swift in Sources */,
 				1800B2F622B1E6BE00D793F4 /* MyExtension.swift in Sources */,
 				18FF879722B8D1CE00BECF3E /* OneDollarLayout.swift in Sources */,
 				1891B71922B8EDAB007D3DD5 /* LoginView.swift in Sources */,
@@ -533,13 +545,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7276CMQ83;
+				DEVELOPMENT_TEAM = 5VSRN284HV;
 				INFOPLIST_FILE = UUBuy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.timi.test.UUBuy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timi.test.UUBuy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -553,13 +565,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7276CMQ83;
+				DEVELOPMENT_TEAM = 5VSRN284HV;
 				INFOPLIST_FILE = UUBuy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.timi.test.UUBuy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timi.test.UUBuy1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

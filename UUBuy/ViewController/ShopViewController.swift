@@ -25,10 +25,7 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate, UICollectio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
+
         let navBar = MyNavavigationBar()
         view.addSubview(navBar)
 

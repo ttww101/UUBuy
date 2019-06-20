@@ -12,8 +12,6 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     var nav: UINavigationController? = nil
     let titles = ["购买清单", "我的竞标", "我的收藏", "领红包"]
-    let viewControllers = [UIViewController(), UIViewController(), UIViewController(), UIViewController()]
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles.count
     }
@@ -29,9 +27,10 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
-        DispatchQueue.main.async {
-            self.nav?.pushViewController(self.viewControllers[row])
-        }
+        let buyListViewController = BuyListViewController()
+        
+        buyListViewController.goodModels = CollectionModel.shared.goodModels
+        self.nav?.pushViewController(buyListViewController)
     }
     
     override init(frame: CGRect, style: UITableView.Style) {

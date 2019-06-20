@@ -8,9 +8,20 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class MeViewController: UIViewController {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nameLabel.text = UserModel.shared.isLogin() ? "登入用戶" : "遊客"
+    }
+    
+    let nameLabel = UILabel()
+    let emailLabel = UILabel()
+    let logoutBtn = UIButton()
+    let meTableView = MeTableView(frame: CGRect(x: 15, y: 160, width: width-30, height: height - 300), style: .plain)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,8 +48,7 @@ class MeViewController: UIViewController {
         avatarImgView.layer.cornerRadius = 35
         avatarImgView.clipsToBounds = true
         
-        let nameLabel = UILabel()
-        nameLabel.text = "小包子"
+        nameLabel.text = UserModel.shared.isLogin() ? "登入用戶" : "遊客"
         nameLabel.font = UIFont.systemFont(ofSize: 18)
         nameLabel.textColor = .white
         view.addSubview(nameLabel)
@@ -48,8 +58,8 @@ class MeViewController: UIViewController {
             make.right.equalTo(view)
         }
         
-        let emailLabel = UILabel()
-        emailLabel.text = "1xxxxxx@xx.com"
+        
+        emailLabel.text = UserModel.shared.email
         emailLabel.font = UIFont.systemFont(ofSize: 18)
         emailLabel.textColor = .white
         view.addSubview(emailLabel)
@@ -59,13 +69,12 @@ class MeViewController: UIViewController {
             make.right.equalTo(view)
         }
         
-        let meTableView = MeTableView(frame: CGRect(x: 15, y: 160, width: width-30, height: height - 300), style: .plain)
+        
         meTableView.layer.cornerRadius = 10
         meTableView.clipsToBounds = true
         meTableView.nav = navigationController
         view.addSubview(meTableView)
         
-        let logoutBtn = UIButton()
         logoutBtn.setTitle("退出登入", for: .normal)
         logoutBtn.setTitleColor(.black, for: .normal)
         logoutBtn.backgroundColor = .white
@@ -83,6 +92,21 @@ class MeViewController: UIViewController {
         logoutBtn.layer.shadowOffset = CGSize(width: 1, height: 1)
         logoutBtn.layer.shadowRadius = 2
         logoutBtn.layer.shadowOpacity = 0.2
+        logoutBtn.rx.tap.subscribe(onNext: {
+            if UserModel.shared.isLogin() {
+                let controller = UIAlertController(title: "確認登出", message: "是否要登出", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
+                    UserModel.shared.logout()
+                    SVProgressHUD.showInfo(withStatus: "登出成功")
+                    self.nameLabel.text = UserModel.shared.isLogin() ? "登入用戶" : "遊客"
+                    self.emailLabel.text = UserModel.shared.email
+                }
+                controller.addAction(okAction)
+                let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+                controller.addAction(cancelAction)
+                self.present(controller, animated: true, completion: nil)
+            }
+        })
     }
     
     

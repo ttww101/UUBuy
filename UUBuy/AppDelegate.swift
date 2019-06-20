@@ -8,13 +8,85 @@
 
 import UIKit
 import Moya
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        do {
+            let jsonData = try JSONEncoder().encode(CartModel.shared.goodModels)
+            let jsonString = String(decoding: jsonData, as: UTF8.self)
+            print(jsonString)
+            archive(object: jsonString, path: "cart")
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(CollectionModel.shared.goodModels)
+            let jsonString = String(decoding: jsonData, as: UTF8.self)
+            print(jsonString)
+            archive(object: jsonString, path: "collection")
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(UserModel.allUser)
+            let jsonString = String(decoding: jsonData, as: UTF8.self)
+            print(jsonString)
+            archive(object: jsonString, path: "user")
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(UserModel.shared)
+            let jsonString = String(decoding: jsonData, as: UTF8.self)
+            print(jsonString)
+            archive(object: jsonString, path: "currentUser")
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        SVProgressHUD.setMaxSupportedWindowLevel(UIWindow.Level.alert + 1)
+        do {
+            let jsonStr = unarchive(path: "cart") as? String
+            if let jsonStr = jsonStr {
+                CartModel.shared.goodModels = try! JSONDecoder().decode(Array<GoodModel>.self,from: jsonStr.data(using: .utf8)!)
+            }
+        }
+        
+        do {
+            let jsonStr = unarchive(path: "collection") as? String
+            if let jsonStr = jsonStr {
+                CollectionModel.shared.goodModels = try! JSONDecoder().decode(Array<GoodModel>.self,from: jsonStr.data(using: .utf8)!)
+            }
+        }
+        
+        do {
+            let jsonStr = unarchive(path: "user") as? String
+            if let jsonStr = jsonStr {
+                UserModel.allUser = try! JSONDecoder().decode(Array<UserModel>.self,from: jsonStr.data(using: .utf8)!)
+            }
+        }
+        
+        do {
+            let jsonStr = unarchive(path: "currentUser") as? String
+            if let jsonStr = jsonStr {
+                UserModel.shared = try! JSONDecoder().decode(UserModel.self,from: jsonStr.data(using: .utf8)!)
+            }
+        }
+        
+        
+//        archive(object: ["fdsak", "123"], path: "test")
+//        let str = unarchive(path: "test")
+//        print(str)
         
         let MEMORY_CAPACITY = 4 * 1024 * 1024
         let DISK_CAPACITY =  20 * 1024 * 1024

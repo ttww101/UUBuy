@@ -107,10 +107,15 @@ class MyNavavigationBar: UINavigationBar, UITextFieldDelegate {
             make.right.equalTo(self).offset(-25)
         }
         btn.rx.tap.subscribe(onNext: {
-            let cartTableViewController = CartTableViewController()
-            cartTableViewController.hidesBottomBarWhenPushed = true
-            let navController = self.viewController as! UINavigationController
-            navController.pushViewController(cartTableViewController)
+            if UserModel.shared.isLogin() {
+                let cartTableViewController = CartTableViewController(style: .grouped)
+                cartTableViewController.hidesBottomBarWhenPushed = true
+                let navController = self.viewController as! UINavigationController
+                navController.pushViewController(cartTableViewController)
+            } else {
+                LoginView.show()
+            }
+            
         })
     }
     
