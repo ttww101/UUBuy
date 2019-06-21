@@ -14,6 +14,7 @@
 		182B66F822BA3E59000070A0 /* OneDollarDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66F722BA3E59000070A0 /* OneDollarDetailTableViewController.swift */; };
 		182B66FA22BB4D64000070A0 /* BuyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66F922BB4D64000070A0 /* BuyListViewController.swift */; };
 		182B66FC22BB5851000070A0 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66FB22BB5851000070A0 /* CollectionModel.swift */; };
+		182B66FE22BB7919000070A0 /* ReceiveRedEnvelopesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B66FD22BB7919000070A0 /* ReceiveRedEnvelopesViewController.swift */; };
 		1844753922AFA630000A2391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844753822AFA630000A2391 /* AppDelegate.swift */; };
 		1844753B22AFA630000A2391 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844753A22AFA630000A2391 /* ViewController.swift */; };
 		1844753E22AFA630000A2391 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844753C22AFA630000A2391 /* Main.storyboard */; };
@@ -32,12 +33,14 @@
 		184E86FF22B344AB0050C0BD /* GoodDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E86FE22B344AA0050C0BD /* GoodDetailTableViewController.swift */; };
 		184E870222B3A6F70050C0BD /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E870122B3A6F70050C0BD /* CartTableViewController.swift */; };
 		184E870422B3ACC40050C0BD /* NotifcationItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E870322B3ACC40050C0BD /* NotifcationItemTableViewCell.swift */; };
+		187EBF3E22BC6EAE00915836 /* OneDollarGoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EBF3D22BC6EAE00915836 /* OneDollarGoodModel.swift */; };
+		187EBF4022BC703C00915836 /* BidManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EBF3F22BC703C00915836 /* BidManager.swift */; };
 		1891B71922B8EDAB007D3DD5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891B71822B8EDAB007D3DD5 /* LoginView.swift */; };
 		1891B71D22B9E6C5007D3DD5 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891B71C22B9E6C5007D3DD5 /* CartModel.swift */; };
 		1898A70822B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70722B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift */; };
 		1898A70A22B7406B00476ED0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70922B7406B00476ED0 /* BannerCollectionViewCell.swift */; };
 		1898A70C22B74BD300476ED0 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70B22B74BD300476ED0 /* ShopViewController.swift */; };
-		1898A70E22B74BE800476ED0 /* OneDollarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70D22B74BE800476ED0 /* OneDollarViewController.swift */; };
+		1898A70E22B74BE800476ED0 /* OneDollarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70D22B74BE800476ED0 /* OneDollarCollectionViewController.swift */; };
 		1898A71022B765D700476ED0 /* NotificationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A70F22B765D700476ED0 /* NotificationHeaderView.swift */; };
 		1898A71222B76A2800476ED0 /* NotificationSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A71122B76A2800476ED0 /* NotificationSwitchTableViewCell.swift */; };
 		1898A71422B78BA100476ED0 /* ShopCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898A71322B78BA000476ED0 /* ShopCollectionView.swift */; };
@@ -70,6 +73,7 @@
 		182B66F722BA3E59000070A0 /* OneDollarDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDollarDetailTableViewController.swift; sourceTree = "<group>"; };
 		182B66F922BB4D64000070A0 /* BuyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyListViewController.swift; sourceTree = "<group>"; };
 		182B66FB22BB5851000070A0 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
+		182B66FD22BB7919000070A0 /* ReceiveRedEnvelopesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveRedEnvelopesViewController.swift; sourceTree = "<group>"; };
 		1844753522AFA630000A2391 /* UUBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1844753822AFA630000A2391 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1844753A22AFA630000A2391 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,12 +94,14 @@
 		184E86FE22B344AA0050C0BD /* GoodDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailTableViewController.swift; sourceTree = "<group>"; };
 		184E870122B3A6F70050C0BD /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
 		184E870322B3ACC40050C0BD /* NotifcationItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifcationItemTableViewCell.swift; sourceTree = "<group>"; };
+		187EBF3D22BC6EAE00915836 /* OneDollarGoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDollarGoodModel.swift; sourceTree = "<group>"; };
+		187EBF3F22BC703C00915836 /* BidManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidManager.swift; sourceTree = "<group>"; };
 		1891B71822B8EDAB007D3DD5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1891B71C22B9E6C5007D3DD5 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		1898A70722B7359C00476ED0 /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		1898A70922B7406B00476ED0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		1898A70B22B74BD300476ED0 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
-		1898A70D22B74BE800476ED0 /* OneDollarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDollarViewController.swift; sourceTree = "<group>"; };
+		1898A70D22B74BE800476ED0 /* OneDollarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDollarCollectionViewController.swift; sourceTree = "<group>"; };
 		1898A70F22B765D700476ED0 /* NotificationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHeaderView.swift; sourceTree = "<group>"; };
 		1898A71122B76A2800476ED0 /* NotificationSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		1898A71322B78BA000476ED0 /* ShopCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionView.swift; sourceTree = "<group>"; };
@@ -163,12 +169,13 @@
 		1844754A22B08F60000A2391 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				182B66FD22BB7919000070A0 /* ReceiveRedEnvelopesViewController.swift */,
 				182B66F922BB4D64000070A0 /* BuyListViewController.swift */,
 				182B66F722BA3E59000070A0 /* OneDollarDetailTableViewController.swift */,
 				182B66F522BA1F22000070A0 /* SearchResultViewController.swift */,
 				1898A71522B8772A00476ED0 /* SearchableNavigationController.swift */,
 				1898A70B22B74BD300476ED0 /* ShopViewController.swift */,
-				1898A70D22B74BE800476ED0 /* OneDollarViewController.swift */,
+				1898A70D22B74BE800476ED0 /* OneDollarCollectionViewController.swift */,
 				18F30ADF22B3AF4200514806 /* NotificationViewController.swift */,
 				184E870122B3A6F70050C0BD /* CartTableViewController.swift */,
 				184E86FA22B24DC50050C0BD /* MeViewController.swift */,
@@ -195,6 +202,8 @@
 				1844755622B09235000A2391 /* GoodModel.swift */,
 				1844755222B091E7000A2391 /* OrderModel.swift */,
 				182B66FB22BB5851000070A0 /* CollectionModel.swift */,
+				187EBF3D22BC6EAE00915836 /* OneDollarGoodModel.swift */,
+				187EBF3F22BC703C00915836 /* BidManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +392,7 @@
 				1844755722B09235000A2391 /* GoodModel.swift in Sources */,
 				184E86F722B21C6E0050C0BD /* HomeLayout.swift in Sources */,
 				182B66F622BA1F22000070A0 /* SearchResultViewController.swift in Sources */,
+				187EBF4022BC703C00915836 /* BidManager.swift in Sources */,
 				1844754F22B0913C000A2391 /* TableViewController.swift in Sources */,
 				1844755522B09210000A2391 /* UserModel.swift in Sources */,
 				18FF879922B8D34800BECF3E /* OneDollarGoodCollectionViewCell.swift in Sources */,
@@ -394,9 +404,11 @@
 				1898A70C22B74BD300476ED0 /* ShopViewController.swift in Sources */,
 				182B66F822BA3E59000070A0 /* OneDollarDetailTableViewController.swift in Sources */,
 				1800B2F622B1E6BE00D793F4 /* MyExtension.swift in Sources */,
+				187EBF3E22BC6EAE00915836 /* OneDollarGoodModel.swift in Sources */,
 				18FF879722B8D1CE00BECF3E /* OneDollarLayout.swift in Sources */,
 				1891B71922B8EDAB007D3DD5 /* LoginView.swift in Sources */,
-				1898A70E22B74BE800476ED0 /* OneDollarViewController.swift in Sources */,
+				182B66FE22BB7919000070A0 /* ReceiveRedEnvelopesViewController.swift in Sources */,
+				1898A70E22B74BE800476ED0 /* OneDollarCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

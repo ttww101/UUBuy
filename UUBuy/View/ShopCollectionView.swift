@@ -21,6 +21,7 @@ class ShopCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     */
     var ids: [Int] = []
     var goodModels: [GoodModel?] = []
+    var useId = true
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -40,7 +41,7 @@ class ShopCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if goodModels.count > ids.count {
+        if !useId {
             return goodModels.count
         }
         ids.map { (id) in
@@ -71,7 +72,7 @@ class ShopCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
             }
         })
         
-        if goodModels.count > ids.count {
+        if !useId {
             let good = self.goodModels[item]!
             cell.label.text = good.name
             cell.priceLabel.text = good.price

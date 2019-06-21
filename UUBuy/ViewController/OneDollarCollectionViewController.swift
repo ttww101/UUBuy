@@ -10,10 +10,7 @@ import UIKit
 import Moya
 import YYKit
 
-private let reuseIdentifier = "Cell"
-private let goodCellIdentifier = "GoodCollectionViewCell"
-
-class OneDollarViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class OneDollarCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let goodIds = [137, 144, 141, 145, 121, 111, 146, 107]
     let headerText = ["Hot", "Now"]

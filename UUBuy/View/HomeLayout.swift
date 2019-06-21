@@ -24,7 +24,7 @@ class HomeLayout: UICollectionViewFlowLayout {
         let attrs = UICollectionViewLayoutAttributes(forDecorationViewOfKind: "decorationView", with: indexPath)
         if elementKind == "decorationView" {
             if section == 1 {
-                attrs.frame = CGRect(x: 5, y: 190, width: width - 5 * 2, height: 240)
+                attrs.frame = CGRect(x: 5, y: 190 + (width-375)*0.406, width: width - 5 * 2, height: 240)
             } else {
                 attrs.frame = CGRect(x: 5, y: 470, width: width - 5 * 2, height: 240)
             }
@@ -45,7 +45,7 @@ class HomeLayout: UICollectionViewFlowLayout {
         }
         
         let decorationAttrs1 = layoutAttributesForDecorationView(ofKind: "decorationView", at: IndexPath(item: 0, section: 2))
-        decorationAttrs1?.frame = CGRect(x: 5, y: 475, width: width - 5 * 2, height: 240)
+        decorationAttrs1?.frame = CGRect(x: 5, y: 475 + (width-375)*0.406, width: width - 5 * 2, height: 240)
         if let decorationAttrs1 = decorationAttrs1 {
             if rect.intersects(decorationAttrs1.frame) {
                 attrs.append(decorationAttrs1)

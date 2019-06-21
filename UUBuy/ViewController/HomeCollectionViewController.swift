@@ -116,7 +116,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        print(indexPath)
         let row = indexPath.item
         let vc = GoodDetailTableViewController()
         vc.model = goodModels[row]

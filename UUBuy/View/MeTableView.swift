@@ -18,6 +18,7 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
+        
         let cell = dequeueReusableCell(withClass: UITableViewCell.self)
         cell.textLabel?.text = titles[row]
         cell.accessoryType = .disclosureIndicator
@@ -28,8 +29,18 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         let buyListViewController = BuyListViewController()
-        
-        buyListViewController.goodModels = CollectionModel.shared.goodModels
+        buyListViewController.title = titles[row]
+        if row == 0 {
+            buyListViewController.goodModels = CartModel.shared.goodModels
+        } else if row == 1 {
+            
+        } else if row == 2 {
+            buyListViewController.goodModels = CollectionModel.shared.goodModels
+        } else if row == 3 {
+            let vc = ReceiveRedEnvelopesViewController()
+            self.nav?.pushViewController(vc)
+            return
+        }
         self.nav?.pushViewController(buyListViewController)
     }
     

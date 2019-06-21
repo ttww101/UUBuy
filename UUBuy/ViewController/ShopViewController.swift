@@ -92,9 +92,7 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate, UICollectio
     }
     
     func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) {
-        print("new")
         if segmentedView == self.segmentView1 {
-            print("sublist")
             var attr: [Int] = []
             let id = goods[mainId].2[index].1
             

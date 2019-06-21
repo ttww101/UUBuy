@@ -12,6 +12,13 @@ import SnappingStepper
 
 class CartTableViewController: UITableViewController {
     
+    override func rt_customBackItem(withTarget target: Any!, action: Selector!) -> UIBarButtonItem! {
+        let btn = UIButton()
+        btn.addTarget(target, action: action, for: .touchUpInside)
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        return UIBarButtonItem(customView: btn)
+    }
+    
     override init(style: UITableView.Style) {
         super.init(style: .grouped)
     }
@@ -127,7 +134,6 @@ class CartTableViewController: UITableViewController {
         good.count = Int(sender.value)
         
         //        CartModel.shared.
-        print(cell.row)
         self.totalLabel.text = "合计：\(CartModel.shared.total())元"
     }
     

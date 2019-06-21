@@ -51,9 +51,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }catch{
             print(error.localizedDescription)
         }
+        
+        do {
+            let jsonData = try JSONEncoder().encode(BidManager.shared.oneDollarModels)
+            let jsonString = String(decoding: jsonData, as: UTF8.self)
+            print(jsonString)
+            archive(object: jsonString, path: "oneDollar")
+        }catch{
+            print(error.localizedDescription)
+        }
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        BidManager.shared.scheduleGenerator()
         SVProgressHUD.setMaxSupportedWindowLevel(UIWindow.Level.alert + 1)
         do {
             let jsonStr = unarchive(path: "cart") as? String
@@ -83,6 +93,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        do {
+            let jsonStr = unarchive(path: "oneDollar") as? String
+//            print("dsafjdjaskjfksdal \(jsonStr)")
+            if jsonStr == nil {
+                BidManager.shared.firstTime()
+            } else {
+                if let jsonStr = jsonStr {
+                    BidManager.shared.oneDollarModels = try! JSONDecoder().decode(Array<OneDollarGoodModel>.self,from: jsonStr.data(using: .utf8)!)
+                }
+            }
+        }
+        
         
 //        archive(object: ["fdsak", "123"], path: "test")
 //        let str = unarchive(path: "test")
@@ -108,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let shopViewController = SearchableNavigationController(rootViewController: ShopViewController())
         shopViewController.tabBarItem = UITabBarItem(title: "商城", image: UIImage(named: "buy_icon_b02"), selectedImage: UIImage(named: "buy_icon_b01"))
         let oneDollarLayout = OneDollarLayout()
-        let oneDollarVC = OneDollarViewController(collectionViewLayout: oneDollarLayout)
+        let oneDollarVC = OneDollarCollectionViewController(collectionViewLayout: oneDollarLayout)
         let oneDollarViewController = SearchableNavigationController(rootViewController: oneDollarVC)
         oneDollarViewController.tabBarItem = UITabBarItem(title: "一元", image: UIImage(named: "buy_icon_m02"), selectedImage: UIImage(named: "buy_icon_m01"))
         let notificationViewController = UINavigationController(rootViewController: NotificationViewController())

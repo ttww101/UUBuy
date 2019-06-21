@@ -10,11 +10,19 @@ import UIKit
 
 class BuyListViewController: MeViewController, UICollectionViewDelegate {
     var collectionView: ShopCollectionView! = nil
+    
+    override func rt_customBackItem(withTarget target: Any!, action: Selector!) -> UIBarButtonItem! {
+        let btn = UIButton()
+        btn.addTarget(target, action: action, for: .touchUpInside)
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        return UIBarButtonItem(customView: btn)
+    }
 
     var goodModels: [GoodModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "购买清单"
         logoutBtn.isHidden = true
         meTableView.isHidden = true
         
@@ -26,6 +34,7 @@ class BuyListViewController: MeViewController, UICollectionViewDelegate {
         collectionView.layer.cornerRadius = 10
         collectionView.clipsToBounds = true
         collectionView.goodModels = goodModels
+        collectionView.useId = false
         view.addSubview(collectionView)
         
         collectionView.delegate = self

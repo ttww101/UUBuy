@@ -77,6 +77,10 @@ class MyNavavigationBar: UINavigationBar, UITextFieldDelegate {
         return true
     }
     
+    @objc func doneWithNumberPad() {
+        UIApplication.shared.sendAction(#selector(resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         isTranslucent = true
@@ -88,6 +92,16 @@ class MyNavavigationBar: UINavigationBar, UITextFieldDelegate {
         let searchImgView = UIImageView(named: "buy_s")
         textField.addSubview(searchImgView)
         textField.contentVerticalAlignment = .center
+        let numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        numberToolbar.barStyle = .default
+        numberToolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneWithNumberPad))]
+        numberToolbar.sizeToFit()
+        textField.inputAccessoryView = numberToolbar
+        
+        
+        
         searchImgView.snp.makeConstraints { (make) in
             make.centerY.equalTo(textField)
             make.width.height.equalTo(18)

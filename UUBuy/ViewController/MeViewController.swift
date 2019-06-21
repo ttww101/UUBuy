@@ -25,6 +25,19 @@ class MeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "buy_car"), for: .normal)
+        btn.rx.tap.subscribe(onNext: {
+            if UserModel.shared.isLogin() {
+                let cartTableViewController = CartTableViewController(style: .grouped)
+                cartTableViewController.hidesBottomBarWhenPushed = true
+                self.navigationController!.pushViewController(cartTableViewController)
+            } else {
+                LoginView.show()
+            }
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        
         view.backgroundColor = grayColor
         let navImageView = UIImageView(image: getGradientImage(width: width, height: 100))
         navImageView.frame = CGRect(x: 0, y: -0, width: width, height: 175)

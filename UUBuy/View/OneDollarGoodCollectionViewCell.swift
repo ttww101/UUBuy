@@ -77,7 +77,7 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
 }
 
 class TimerLabel: UILabel {
-    var timeInterval = 360
+    var timeInterval = 3600
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,6 +92,9 @@ class TimerLabel: UILabel {
     }
     
     func timerText() {
+        if timeInterval < 0 {
+            return
+        }
         let hour = timeInterval / 3600
         let min = (timeInterval % 3600) / 60
         let sec = timeInterval % 60

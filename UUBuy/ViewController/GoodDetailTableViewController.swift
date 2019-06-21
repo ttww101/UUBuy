@@ -18,9 +18,23 @@ class GoodDetailTableViewController: UITableViewController {
     let addToCartBtn = UIButton()
     let buyNowBtn = UIButton()
     
+    func isOneDollar() -> Bool {
+        return false
+    }
+    
+    override func rt_customBackItem(withTarget target: Any!, action: Selector!) -> UIBarButtonItem! {
+        let btn = UIButton()
+        btn.addTarget(target, action: action, for: .touchUpInside)
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        return UIBarButtonItem(customView: btn)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
+        let v = UIView()
+        v.frame = CGRect(x: 0, y: 0, width: width, height: 50)
+        tableView.tableFooterView = v
         tableView.backgroundColor = grayColor
         tableView.register(cellWithClass: ImgSlidTableViewCell.self)
         tableView.register(cellWithClass: GoodInfoViewCell.self)
@@ -92,11 +106,16 @@ class GoodDetailTableViewController: UITableViewController {
             return cell
         } else if row == 1 {
             let cell = tableView.dequeueReusableCell(withClass: GoodInfoViewCell.self)
+            if isOneDollar() {
+                cell.oneDollarLayout()
+            } else {
+                cell.goodLayout()
+            }
             cell.priceLabel.text = model?.price
             cell.titleLabel.text = model?.name
             cell.goodNoLabel.text = model?.goodNo
-            cell.stockNumLabel.text = model?.stockNum
-            cell.readySellDateLabel.text = model?.readySellDate
+            cell.stockNumLabel.text = "庫存：\(model!.stockNum!)"
+            cell.readySellDateLabel.text = "上架時間：\(model!.readySellDate!)"
             //            cell.goodDescriptionlabel.text = model?.
             return cell
         } else {
@@ -111,7 +130,6 @@ class GoodDetailTableViewController: UITableViewController {
                         let imageW = image!.size.width
                         let imageH = image!.size.height
                         let height = imageH / imageW * UIScreen.main.bounds.size.width
-                        print(height)
                         make.left.right.bottom.top.equalTo(cell)
                         make.width.equalTo(cell)
                         make.height.equalTo(height)
@@ -165,69 +183,107 @@ class GoodInfoViewCell: UITableViewCell {
     let stockNumLabel = UILabel()
     let readySellDateLabel = UILabel()
     let goodDescriptionlabel = UILabel()
+    var isOneDollar = false
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
-        titleLabel.text = ""
-        titleLabel.font = UIFont.systemFont(ofSize: 18)
-        titleLabel.textColor = .black
-        addSubview(titleLabel)
+    func oneDollarLayout() {
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self)
-            make.top.equalTo(self).offset(10)
+            make.top.equalTo(self).offset(80)
         }
-        
-        goodNoLabel.text = ""
-        goodNoLabel.font = UIFont.systemFont(ofSize: 12)
-        goodNoLabel.textColor = .black
-        addSubview(goodNoLabel)
         goodNoLabel.snp.makeConstraints { (make) in
             make.right.equalTo(self).offset(-10)
             make.centerY.equalTo(titleLabel)
         }
-        
-        priceLabel.text = ""
-        priceLabel.font = UIFont.systemFont(ofSize: 18)
-        priceLabel.textColor = orangeColor
-        addSubview(priceLabel)
-        priceLabel.snp.makeConstraints { (make) in
+//        priceLabel.snp.makeConstraints { (make) in
+//            make.left.equalTo(self).offset(10)
+//            make.right.equalTo(self)
+//            make.top.equalTo(goodNoLabel.snp.bottom).offset(10)
+//        }
+        stockNumLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self)
             make.top.equalTo(goodNoLabel.snp.bottom).offset(10)
         }
-        
-        stockNumLabel.text = ""
-        stockNumLabel.font = UIFont.systemFont(ofSize: 14)
-        stockNumLabel.textColor = .black
-        addSubview(stockNumLabel)
-        stockNumLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(10)
-            make.right.equalTo(self)
-            make.top.equalTo(priceLabel.snp.bottom).offset(10)
-        }
-        
-        readySellDateLabel.text = ""
-        readySellDateLabel.font = UIFont.systemFont(ofSize: 14)
-        readySellDateLabel.textColor = .black
-        addSubview(readySellDateLabel)
         readySellDateLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self)
             make.top.equalTo(stockNumLabel.snp.bottom).offset(10)
         }
-        
-        goodDescriptionlabel.text = ""
-        goodDescriptionlabel.font = UIFont.systemFont(ofSize: 14)
-        goodDescriptionlabel.textColor = .black
-        addSubview(goodDescriptionlabel)
         goodDescriptionlabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self)
             make.top.equalTo(readySellDateLabel.snp.bottom).offset(10)
             make.bottom.equalTo(self)
         }
+    }
+    
+    func goodLayout() {
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self)
+            make.top.equalTo(self).offset(10)
+        }
+        goodNoLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(self).offset(-10)
+            make.centerY.equalTo(titleLabel)
+        }
+        priceLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self)
+            make.top.equalTo(goodNoLabel.snp.bottom).offset(10)
+        }
+        stockNumLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self)
+            make.top.equalTo(priceLabel.snp.bottom).offset(10)
+        }
+        readySellDateLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self)
+            make.top.equalTo(stockNumLabel.snp.bottom).offset(10)
+        }
+        goodDescriptionlabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self)
+            make.top.equalTo(readySellDateLabel.snp.bottom).offset(10)
+            make.bottom.equalTo(self)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
+        
+        titleLabel.text = ""
+        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.textColor = .black
+        addSubview(titleLabel)
+        
+        goodNoLabel.text = ""
+        goodNoLabel.font = UIFont.systemFont(ofSize: 12)
+        goodNoLabel.textColor = .black
+        addSubview(goodNoLabel)
+        
+        priceLabel.text = ""
+        priceLabel.font = UIFont.systemFont(ofSize: 24)
+        priceLabel.textColor = orangeColor
+        addSubview(priceLabel)
+        
+        stockNumLabel.text = ""
+        stockNumLabel.font = UIFont.systemFont(ofSize: 14)
+        stockNumLabel.textColor = .black
+        addSubview(stockNumLabel)
+        
+        readySellDateLabel.text = ""
+        readySellDateLabel.font = UIFont.systemFont(ofSize: 14)
+        readySellDateLabel.textColor = .black
+        addSubview(readySellDateLabel)
+        
+        goodDescriptionlabel.text = ""
+        goodDescriptionlabel.font = UIFont.systemFont(ofSize: 14)
+        goodDescriptionlabel.textColor = .black
+        addSubview(goodDescriptionlabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

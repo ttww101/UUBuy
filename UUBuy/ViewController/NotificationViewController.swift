@@ -35,8 +35,6 @@ func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
 }
 
 class NotificationViewController: UIViewController {
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +55,17 @@ class NotificationViewController: UIViewController {
         
         let btn = UIButton()
         btn.setImage(UIImage(named: "buy_car"), for: .normal)
+        btn.rx.tap.subscribe(onNext: {
+            if UserModel.shared.isLogin() {
+                let cartTableViewController = CartTableViewController(style: .grouped)
+                cartTableViewController.hidesBottomBarWhenPushed = true
+                self.navigationController!.pushViewController(cartTableViewController)
+            } else {
+                LoginView.show()
+            }
+        })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        
     }
 }
 
@@ -127,6 +135,7 @@ class NotificationTableView : UITableView, UITableViewDelegate, UITableViewDataS
 }
 
 class NotificationHeader: UIView {
+    let label = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
         //        backgroundColor = .white

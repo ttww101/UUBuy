@@ -12,7 +12,6 @@ class NotificationHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         let imageView = UIImageView(named: "buy_bbag")
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
@@ -20,6 +19,17 @@ class NotificationHeaderView: UIView {
             make.top.equalTo(self).offset(10)
             make.left.right.bottom.equalTo(self)
         }
+        
+        let btn = UIButton()
+        addSubview(btn)
+        btn.snp.makeConstraints { (make) in
+            make.right.top.bottom.equalTo(self)
+            make.width.equalTo(imageView.snp.height)
+        }
+        btn.rx.tap.subscribe(onNext: {
+            let vc = self.viewController
+            vc?.navigationController?.pushViewController(ReceiveRedEnvelopesViewController())
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {
