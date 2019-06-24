@@ -12,13 +12,18 @@ import YYKit
 
 class OneDollarCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let goodIds = [137, 144, 141, 145, 121, 111, 146, 107]
+    var goodIds: [Int] = []
     let headerText = ["Hot", "Now"]
     //    let goodIds = [137, 137, 137, 137, 137, 137, 137, 137]
     var goodModels: [GoodModel?] = []
     
     public override func rt_navigationBarClass() -> AnyClass! {
         return MyNavavigationBar.self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        collectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -32,7 +37,7 @@ class OneDollarCollectionViewController: UICollectionViewController, UICollectio
         let v = UICollectionReusableView()
         // Do any additional setup after loading the view.
         
-        goodIds.map { (id) in
+        for _ in 0..<8 {
             goodModels.append(nil)
         }
         collectionView.backgroundColor = UIColor(hex: 0xF0F0F0)
@@ -50,6 +55,10 @@ class OneDollarCollectionViewController: UICollectionViewController, UICollectio
         if section == 0 {
             return 4
         }
+        goodIds = []
+        for i in BidManager.shared.oneDollarModels {
+            goodIds.append(i.id)
+        }
         return 8
     }
     
@@ -60,7 +69,7 @@ class OneDollarCollectionViewController: UICollectionViewController, UICollectio
         
         let item = indexPath.item
         let id = goodIds[item]
-        
+        let oneDollarModel = BidManager.shared.oneDollarModels[item]
         let provider = MoyaProvider<API>(plugins: [MoyaCacheablePlugin()])
         provider.request(.getProduct(id: id)) { (result) in
             switch result {
@@ -68,11 +77,12 @@ class OneDollarCollectionViewController: UICollectionViewController, UICollectio
                 let data = moyaResponse.data // 获取到的数据
                 //                let statusCode = moyaResponse.statusCode // 请求状态： 200, 401, 500, etc
                 
-                let good = getProduct(data: data)
+                let good = parseGood(data: data)
                 self.goodModels[item] = good
                 cell.label.text = good.name
                 cell.priceLabel.text = good.price
-                //                let imgData = try? Data(contentsOf: URL(string: good.bigImgs[0])!)
+                cell.timerLabel.timeInterval = Int(oneDollarModel.deadline.timeIntervalSince1970 - Date().timeIntervalSince1970)
+//                                let imgData = try? Data(contentsOf: URL(string: good.bigImgs[0])!)
                 //                cell.imageView.image = UIImage(data: imgData!)
                 cell.imageView.imageURL = URL(string: good.bigImgs[0])
                 
@@ -91,6 +101,7 @@ class OneDollarCollectionViewController: UICollectionViewController, UICollectio
         let vc = OneDollarDetailTableViewController()
         vc.model = goodModels[row]
         vc.hidesBottomBarWhenPushed = true
+        vc.oneDollarModel = BidManager.shared.oneDollarModels[row]
         navigationController?.pushViewController(vc)
         return true
     }

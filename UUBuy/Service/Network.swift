@@ -17,7 +17,7 @@ func getId(str: String) -> Int {
     return Int(strId)!
 }
 
-func getCatelory(data: Data) -> [(String, String, [(String, Int)])] {
+func parseCatelory(data: Data) -> [(String, String, [(String, Int)])] {
     var catelories: [(String, String, [(String, Int)])] = []
     if let doc = try? HTML(html: data, encoding: .utf8) {
         // list
@@ -62,7 +62,7 @@ func fullPath(str: String) -> String {
     return str
 }
 
-func getProduct(data: Data) -> GoodModel {
+func parseGood(data: Data) -> GoodModel {
     var goodModel = GoodModel()
     if let doc = try? HTML(html: data, encoding: .utf8) {
         let name = doc.css(".goods-name")[0].text!.trimmed

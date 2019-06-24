@@ -14,7 +14,8 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
     let collectBtn = UIButton()
     let buyBtn = UIButton()
     let priceLabel = UILabel()
-    
+    let timerLabel = TimerLabel()
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +45,6 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
         }
         priceLabel.text = "Loading"
         
-        let timerLabel = TimerLabel()
         timerLabel.text = "00:00:00"
         timerLabel.font = UIFont.systemFont(ofSize: 7)
         timerLabel.textColor = .white

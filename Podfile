@@ -20,5 +20,5 @@ target 'UUBuy' do
   pod 'JXSegmentedView'
   pod 'RTRootNavigationController'
   pod 'SVProgressHUD'
-
+  pod 'GMStepper'
 end

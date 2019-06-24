@@ -43,7 +43,7 @@ class ShopViewController: UIViewController, JXSegmentedViewDelegate, UICollectio
             switch result {
             case .success(let moyaResponse):
                 let data = moyaResponse.data // 获取到的数据
-                self.goods = getCatelory(data: data)
+                self.goods = parseCatelory(data: data)
                 var attr: [String] = []
                 for good in self.goods {
                     attr.append(good.0)

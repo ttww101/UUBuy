@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        BidManager.shared.scheduleGenerator()
+        BidManager.shared.timerJob()
         SVProgressHUD.setMaxSupportedWindowLevel(UIWindow.Level.alert + 1)
         do {
             let jsonStr = unarchive(path: "cart") as? String

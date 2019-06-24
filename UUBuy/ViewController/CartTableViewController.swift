@@ -189,12 +189,12 @@ class CartGoodTableViewCell: UITableViewCell {
             make.size.equalTo(CGSize(width: 20, height: 20))
         }
         
-        stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 15)
+        stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 30)
         stepper.symbolFontColor      = .white
         stepper.backgroundColor      = UIColor(hex: 0xFF8300)
         stepper.thumbWidthRatio      = 0.5
         stepper.thumbText            = nil
-        stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 15)
+        stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 30)
         stepper.thumbBackgroundColor = .white
         stepper.thumbTextColor       = .black
         //        stepper.thumbBorderColor = .red

@@ -22,7 +22,7 @@ class BuyListViewController: MeViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "购买清单"
+//        title = "购买清单"
         logoutBtn.isHidden = true
         meTableView.isHidden = true
         

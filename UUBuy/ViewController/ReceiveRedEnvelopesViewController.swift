@@ -11,7 +11,7 @@ import UIKit
 class ReceiveRedEnvelopesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         title = "領紅包"
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -76,7 +76,10 @@ class ReceiveRedEnvelopesTableView : UITableView, UITableViewDelegate, UITableVi
         let section = indexPath.section
         let row = indexPath.row
         
+        let text = ["7", "15", "20", "28"]
+    
         let cell = dequeueReusableCell(withClass: RedECell.self)
+        cell.label.text = "簽到\(text[row])天可領取"
         
         return cell
     }
@@ -103,7 +106,11 @@ class ReceiveRedEnvelopesTableView : UITableView, UITableViewDelegate, UITableVi
     }
 }
 
+
+
+
 class RedECell: UITableViewCell {
+    let label = UILabel()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let imgView = UIImageView(named: "open")
@@ -112,8 +119,6 @@ class RedECell: UITableViewCell {
             make.left.equalTo(self).offset(15)
             make.centerY.equalTo(self)
         }
-        
-        let label = UILabel()
         
         label.text = "簽到天可領取"
         label.font = UIFont.systemFont(ofSize: 14)

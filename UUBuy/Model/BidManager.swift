@@ -21,7 +21,7 @@ class BidManager: NSObject {
             switch result {
             case .success(let moyaResponse):
                 let data = moyaResponse.data // 获取到的数据
-                let catelogory = getCatelory(data: data)
+                let catelogory = parseCatelory(data: data)
  
                 for i in catelogory {
                     for j in i.2 {
@@ -76,27 +76,37 @@ class BidManager: NSObject {
         var randNum = Int(arc4random()) % goodsPool.count
         repeat {
             randNum = Int(arc4random()) % goodsPool.count
-        } while isExit(id: randNum)
+        } while isExit(id: goodsPool[randNum])
         
         let good = self.oneDollarModels[i]
-        let calendar = Calendar.current
+        
         
         good.deadline = calendar.date(byAdding: Calendar.Component.hour, value: 1, to: Date())!
         good.currentBidPrice = 1
         good.startBidPrice = 1
-        good.id = randNum
+        good.id = goodsPool[randNum]
         
     }
+    let calendar = Calendar.current
     
     func timerJob() {
         // 3-5 分鐘後更新一元商品得標價格
         
         // 每一分鐘檢查是否有商品需要更新
-        for i in 0..<oneDollarModels.count {
-            if oneDollarModels[i].isOvertime() {
-                newModel(i: i)
+        for i in 0..<self.oneDollarModels.count {
+            if self.oneDollarModels[i].isOvertime() {
+                self.newModel(i: i)
             }
         }
+        let timer = Timer(timeInterval: 5, block: { (_) in
+            for i in 0..<self.oneDollarModels.count {
+                if self.oneDollarModels[i].isOvertime() {
+                    self.newModel(i: i)
+                }
+            }
+        }, repeats: true)
+        RunLoop.current.add(timer, forMode: .default)
+        timer.fire()
     }
     
     func oneDollarGoods() {

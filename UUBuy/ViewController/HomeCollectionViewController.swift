@@ -98,7 +98,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                 let data = moyaResponse.data // 获取到的数据
                 //                let statusCode = moyaResponse.statusCode // 请求状态： 200, 401, 500, etc
                 
-                let good = getProduct(data: data)
+                let good = parseGood(data: data)
                 self.goodModels[item] = good
                 cell.label.text = good.name
                 cell.priceLabel.text = good.price

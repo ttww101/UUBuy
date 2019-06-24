@@ -29,7 +29,7 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         let buyListViewController = BuyListViewController()
-        buyListViewController.title = titles[row]
+        buyListViewController.navigationItem.title = titles[row]
         if row == 0 {
             buyListViewController.goodModels = CartModel.shared.goodModels
         } else if row == 1 {
@@ -38,6 +38,8 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
             buyListViewController.goodModels = CollectionModel.shared.goodModels
         } else if row == 3 {
             let vc = ReceiveRedEnvelopesViewController()
+//        vc.navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
+
             self.nav?.pushViewController(vc)
             return
         }

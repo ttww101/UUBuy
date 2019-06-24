@@ -18,4 +18,9 @@ class OneDollarGoodModel: Codable {
     func isOvertime() -> Bool {
         return Date() > deadline
     }
+    
+    func extendDeadline() {
+        let calendar = Calendar.current
+        deadline = calendar.date(byAdding: Calendar.Component.minute, value: 10, to: deadline)!
+    }
 }

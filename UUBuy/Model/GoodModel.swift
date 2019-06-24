@@ -22,4 +22,5 @@ class GoodModel: NSObject, Codable {
     var detailImgs: [String]! = []
     
     var count = 1
+    
 }

@@ -9,8 +9,15 @@
 import UIKit
 import SnappingStepper
 import RTRootNavigationController
+import GMStepper
+import SVProgressHUD
 
 class OneDollarDetailTableViewController: GoodDetailTableViewController {
+    var oneDollarModel: OneDollarGoodModel?
+    let stepper = GMStepper()
+    let remainTimerLabel = TimerLabel()
+    let currentPriceLabel = UILabel()
+    
     override func rt_customBackItem(withTarget target: Any!, action: Selector!) -> UIBarButtonItem! {
         let btn = UIButton()
         btn.addTarget(target, action: action, for: .touchUpInside)
@@ -46,25 +53,20 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
             make.width.equalTo(tableView).multipliedBy(0.7)
         }
         
-        let stepper = SnappingStepper()
-        stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 15)
-        stepper.symbolFontColor      = UIColor(hex: 0xFB9400)
-        stepper.backgroundColor      = UIColor(hex: 0x303030)
-        stepper.thumbWidthRatio      = 0.5
-        stepper.thumbText            = nil
-        stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 15)
-        stepper.thumbBackgroundColor = .white
-        stepper.thumbTextColor       = .black
-        //        stepper.thumbBorderColor = .red
+        stepper.buttonsTextColor = UIColor(hex: 0xFB9400)
+        stepper.buttonsBackgroundColor = UIColor(hex: 0x313131)
+        stepper.labelTextColor = .black
+        stepper.labelBackgroundColor = .white
         
-        stepper.minimumValue = 1
-        stepper.maximumValue = 9
+        stepper.minimumValue = oneDollarModel!.currentBidPrice + 1
+        stepper.maximumValue = 9999
         stepper.stepValue    = 1
+        stepper.value = oneDollarModel!.currentBidPrice + 1
         
         priceBtn.addSubview(stepper)
         stepper.snp.makeConstraints { (make) in
             make.center.equalTo(priceBtn)
-            make.size.equalTo(CGSize(width: 90, height: 20))
+            make.size.equalTo(CGSize(width: 135, height: 30))
         }
         
         bidBtn.setTitle("出价", for: .normal)
@@ -78,6 +80,19 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
             make.height.equalTo(50)
             make.width.equalTo(tableView).multipliedBy(0.3)
         }
+        
+        bidBtn.rx.tap.subscribe(onNext: {
+            if UserModel.shared.isLogin() {
+                self.oneDollarModel?.currentBidPrice = self.stepper.value
+                self.oneDollarModel?.bidUser = UserModel.shared
+                SVProgressHUD.showInfo(withStatus: "出價成功")
+                self.oneDollarModel?.extendDeadline()
+                self.remainTimerLabel.timeInterval = Int(self.oneDollarModel!.deadline.timeIntervalSince1970 - Date().timeIntervalSince1970)
+                self.currentPriceLabel.text = "\(self.oneDollarModel!.currentBidPrice!)元"
+            } else {
+                LoginView.show()
+            }
+        })
         
         let decorationView = UIView()
         decorationView.backgroundColor = .white
@@ -112,8 +127,9 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
             make.bottom.equalTo(decorationView).offset(-20)
         }
         
-        let remainTimerLabel = TimerLabel()
+        
         remainTimerLabel.text = ""
+        remainTimerLabel.timeInterval = Int(oneDollarModel!.deadline.timeIntervalSince1970 - Date().timeIntervalSince1970)
         remainTimerLabel.font = UIFont.systemFont(ofSize: 24)
         remainTimerLabel.textColor = UIColor(hex: 0xEA0000)
         decorationView.addSubview(remainTimerLabel)
@@ -122,8 +138,7 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
             make.centerY.equalTo(remainTimeTitleLabel)
         }
         
-        let currentPriceLabel = UILabel()
-        currentPriceLabel.text = model?.price
+        currentPriceLabel.text = "\(oneDollarModel!.currentBidPrice!)元"
         currentPriceLabel.font = UIFont.systemFont(ofSize: 24)
         currentPriceLabel.textColor = orangeColor
         decorationView.addSubview(currentPriceLabel)
