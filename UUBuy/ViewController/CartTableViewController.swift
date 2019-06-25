@@ -85,6 +85,11 @@ class CartTableViewController: UITableViewController {
             make.top.bottom.right.equalTo(fixedView)
             make.width.equalTo(100)
         }
+        btn.rx.tap.subscribe(onNext: {
+            let vc = PayViewController()
+            vc.sum = CartModel.shared.total()
+            self.navigationController?.pushViewController(vc)
+        })
         
         tableView.contentInset = UIEdgeInsets(top: 26, left: 0, bottom: 50, right: 0)
     }

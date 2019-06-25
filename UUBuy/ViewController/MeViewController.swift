@@ -20,11 +20,12 @@ class MeViewController: UIViewController {
     let nameLabel = UILabel()
     let emailLabel = UILabel()
     let logoutBtn = UIButton()
-    let meTableView = MeTableView(frame: CGRect(x: 15, y: 160, width: width-30, height: height - 300), style: .plain)
+    let meTableView = MeTableView(frame: CGRect(x: 15, y: 160, width: width-30, height: height - 350), style: .plain)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        navigationController!.navigationBar.setColors(background: .clear, text: .white)
+        navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         let btn = UIButton()
         btn.setImage(UIImage(named: "buy_car"), for: .normal)
         btn.rx.tap.subscribe(onNext: {
@@ -86,6 +87,7 @@ class MeViewController: UIViewController {
         meTableView.layer.cornerRadius = 10
         meTableView.clipsToBounds = true
         meTableView.nav = navigationController
+        meTableView.tableFooterView = UIView()
         view.addSubview(meTableView)
         
         logoutBtn.setTitle("退出登入", for: .normal)

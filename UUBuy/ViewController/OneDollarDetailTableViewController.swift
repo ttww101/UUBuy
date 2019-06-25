@@ -83,6 +83,7 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
         
         bidBtn.rx.tap.subscribe(onNext: {
             if UserModel.shared.isLogin() {
+                self.stepper.value += 1
                 self.oneDollarModel?.currentBidPrice = self.stepper.value
                 self.oneDollarModel?.bidUser = UserModel.shared
                 SVProgressHUD.showInfo(withStatus: "出價成功")

@@ -21,4 +21,5 @@ target 'UUBuy' do
   pod 'RTRootNavigationController'
   pod 'SVProgressHUD'
   pod 'GMStepper'
+  pod 'Shallows', '~> 0.10.0'
 end

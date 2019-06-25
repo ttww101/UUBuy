@@ -9,13 +9,29 @@
 import UIKit
 import Moya
 import SVProgressHUD
+import Shallows
+import RTRootNavigationController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    
     func applicationWillTerminate(_ application: UIApplication) {
+        print("flsdjk")
+//        do {
+//            let diskStorage = DiskStorage.main.folder("carts", in: .cachesDirectory)
+//                .mapJSONObject(Array<GoodModel>.self) // Storage<Filename, City>
+//
+//            let cartModels = CartModel.shared.goodModels
+//            diskStorage.set(cartModels, forKey: "cartModels")
+//        }
+        
+        
+//        diskStorage.retrieve(forKey: "cartModels") { (result) in
+//            if let city = result.value { print(city) }
+//        }
         do {
             let jsonData = try JSONEncoder().encode(CartModel.shared.goodModels)
             let jsonString = String(decoding: jsonData, as: UTF8.self)
@@ -66,6 +82,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        BidManager.shared.scheduleGenerator()
         BidManager.shared.timerJob()
         SVProgressHUD.setMaxSupportedWindowLevel(UIWindow.Level.alert + 1)
+        
+//        do {
+//            let diskStorage = DiskStorage.main.folder("carts", in: .cachesDirectory)
+//                .mapJSONObject(Array<GoodModel>.self) // Storage<Filename, City>
+//
+////            let cartModels = CartModel.shared.goodModels
+////            diskStorage.set(cartModels, forKey: "cartModels")
+//
+//            diskStorage.retrieve(forKey: "cartModels") { (result) in
+//                if let cartModels = result.value {
+//                    CartModel.shared.goodModels = cartModels
+//                }
+//            }
+//        }
         do {
             let jsonStr = unarchive(path: "cart") as? String
             if let jsonStr = jsonStr {
@@ -134,11 +164,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let oneDollarVC = OneDollarCollectionViewController(collectionViewLayout: oneDollarLayout)
         let oneDollarViewController = SearchableNavigationController(rootViewController: oneDollarVC)
         oneDollarViewController.tabBarItem = UITabBarItem(title: "一元", image: UIImage(named: "buy_icon_m02"), selectedImage: UIImage(named: "buy_icon_m01"))
-        let notificationViewController = UINavigationController(rootViewController: NotificationViewController())
+        let notificationViewController = RTRootNavigationController(rootViewController: NotificationViewController())
         notificationViewController.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         notificationViewController.tabBarItem = UITabBarItem(title: "通知", image: UIImage(named: "buy_icon_l02"), selectedImage: UIImage(named: "buy_icon_l01"))
         
-        let navController = UINavigationController(rootViewController: MeViewController())
+        let navController = RTRootNavigationController(rootViewController: MeViewController())
         //        navController.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         //        navController.navigationBar.shadowImage = UIImage()
@@ -157,6 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         self.window?.rootViewController = tabBarController
+//        self.window?.rootViewController = PayViewController()
         self.window?.makeKeyAndVisible()
         return true
     }

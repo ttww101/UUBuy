@@ -15,7 +15,6 @@ class UserModel: NSObject, Codable {
     var password = ""
     var address = ""
     
-    
     func login(email: String, password: String) -> Bool {
         for user in UserModel.allUser {
             if email == user.email && password == user.password {

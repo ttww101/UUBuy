@@ -9,6 +9,13 @@
 import UIKit
 
 class ReceiveRedEnvelopesViewController: UIViewController {
+    override func rt_customBackItem(withTarget target: Any!, action: Selector!) -> UIBarButtonItem! {
+        let btn = UIButton()
+        btn.addTarget(target, action: action, for: .touchUpInside)
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        return UIBarButtonItem(customView: btn)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)

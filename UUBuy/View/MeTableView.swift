@@ -33,7 +33,9 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         if row == 0 {
             buyListViewController.goodModels = CartModel.shared.goodModels
         } else if row == 1 {
-            
+            let vc = OneDollarBidListViewController()
+            self.nav?.pushViewController(vc)
+            return
         } else if row == 2 {
             buyListViewController.goodModels = CollectionModel.shared.goodModels
         } else if row == 3 {

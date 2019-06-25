@@ -159,6 +159,7 @@ class LoginView: UIView {
                 }  else if passwordTextField.text!.count < 6 {
                     SVProgressHUD.showError(withStatus: "密碼過短")
                 } else {
+                    SVProgressHUD.showInfo(withStatus: "登入成功")
                     UserModel.shared.login(email: userNameTextField.text!, password: passwordTextField.text!)
                     LoginView.dismiss()
                 }
@@ -215,8 +216,8 @@ class LoginView: UIView {
             addressTextField.placeholder = "计送地址"
             addressTextField.font = UIFont.systemFont(ofSize: 12)
             addressTextField.backgroundColor = UIColor(hex: 0xFFE5C4)
-            addressTextField.isSecureTextEntry = true
             addressTextField.textAlignment = .center
+            addressTextField.inputAccessoryView = TextFieldHelper().textFieldToolBar()
             addSubview(addressTextField)
             addressTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
@@ -249,8 +250,9 @@ class LoginView: UIView {
                 } else if passwordTextField.text! != comfirmPasswordTextField.text! {
                     SVProgressHUD.showError(withStatus: "密碼與確認密碼不相同")
                 } else {
-                    UserModel.shared.login(email: userNameTextField.text!, password: passwordTextField.text!)
+                    SVProgressHUD.showInfo(withStatus: "註冊成功")
                     UserModel.shared.register(email: userNameTextField.text!, password: passwordTextField.text!, address: addressTextField.text!)
+
                     LoginView.dismiss()
                 }
                 

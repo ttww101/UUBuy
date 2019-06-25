@@ -26,6 +26,7 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - Shallows (0.10.0)
   - SnapKit (5.0.0)
   - SnappingStepper (3.0.0):
     - DynamicColor (~> 4.0)
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - RTRootNavigationController
   - RxCocoa (~> 5.0)
   - RxSwift (~> 5.0)
+  - Shallows (~> 0.10.0)
   - SnapKit
   - SnappingStepper (~> 3.0.0)
   - SVProgressHUD
@@ -85,6 +87,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - Shallows
     - SnapKit
     - SnappingStepper
     - SVProgressHUD
@@ -105,12 +108,13 @@ SPEC CHECKSUMS:
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  Shallows: be3882d8ecf8b1e8b71deae8b1cb74173cf3e355
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SnappingStepper: 57c41c94d3fe2665c5601d61d4dcf8f689b957ab
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: d915c54c6a65b4c3fa585671b1b42adb5e25a096
+PODFILE CHECKSUM: a6611fad4ad7cb89c7c1214e5055f06d293ecdc7
 
 COCOAPODS: 1.7.2

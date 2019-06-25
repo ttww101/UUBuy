@@ -11,6 +11,7 @@ import Moya
 import YYKit
 import ImageSlideshow
 import Alamofire
+import SVProgressHUD
 let grayColor = UIColor(hex: 0xF0F0F0)
 class GoodDetailTableViewController: UITableViewController {
     var model: GoodModel?
@@ -31,6 +32,9 @@ class GoodDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = model?.name
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: width, height: 50)
@@ -55,6 +59,7 @@ class GoodDetailTableViewController: UITableViewController {
         }
         addToCartBtn.rx.tap.subscribe(onNext: {
             CartModel.shared.addGood(good: self.model!)
+            SVProgressHUD.showInfo(withStatus: "成功加入購物車")
         })
         
         buyNowBtn.setTitle("立即购买", for: .normal)

@@ -37,7 +37,8 @@ func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
 class NotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
+
         title = "通知"
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
