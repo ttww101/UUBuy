@@ -17,12 +17,14 @@ class BuyListViewController: MeViewController, UICollectionViewDelegate {
         btn.setImage(UIImage(named: "back"), for: .normal)
         return UIBarButtonItem(customView: btn)
     }
+    
+    var navTitle = ""
 
     var goodModels: [GoodModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
-//        title = "购买清单"
+        title = navTitle
         logoutBtn.isHidden = true
         meTableView.isHidden = true
         
@@ -65,7 +67,7 @@ class OneDollarBidListViewController: MeViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
-        //        title = "购买清单"
+        title = "我的竞标"
         logoutBtn.isHidden = true
         meTableView.isHidden = true
         

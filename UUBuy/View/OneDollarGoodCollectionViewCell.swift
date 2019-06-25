@@ -19,6 +19,7 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let rate = frame.size.width / 75
         
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
@@ -26,7 +27,7 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(self.snp.width)
         }
         addSubview(label)
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 10*rate)
         label.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.centerX.equalTo(self)
@@ -37,7 +38,7 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
         addSubview(priceLabel)
         priceLabel.textColor = redColor
         priceLabel.textAlignment = .left
-        priceLabel.font = UIFont.systemFont(ofSize: 10)
+        priceLabel.font = UIFont.systemFont(ofSize: 10*rate)
         priceLabel.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.centerX.equalTo(self)
@@ -46,7 +47,8 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
         priceLabel.text = "Loading"
         
         timerLabel.text = "00:00:00"
-        timerLabel.font = UIFont.systemFont(ofSize: 7)
+        timerLabel.font = UIFont.systemFont(ofSize: 7*rate)
+        
         timerLabel.textColor = .white
         timerLabel.backgroundColor = .gray
         timerLabel.layer.cornerRadius = 3
@@ -60,14 +62,14 @@ class OneDollarGoodCollectionViewCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("參與競標", for: .normal)
         btn.backgroundColor = orangeColor
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 8)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 8*rate)
         addSubview(btn)
         btn.snp.makeConstraints { (make) in
             make.left.right.equalTo(self)
             make.top.equalTo(priceLabel.snp.bottom)
-            make.height.equalTo(10)
+            make.height.equalTo(10*rate)
         }
-        btn.layer.cornerRadius = 5
+        btn.layer.cornerRadius = 5*rate
         btn.clipsToBounds = true
     }
     

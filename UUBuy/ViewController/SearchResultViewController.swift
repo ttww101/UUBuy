@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-class SearchResultViewController: UIViewController {
+class SearchResultViewController: UIViewController, UICollectionViewDelegate {
 
     var ids: [Int] = []
     var goods: [(String, String, [(String, Int)])] = []
@@ -37,7 +37,18 @@ class SearchResultViewController: UIViewController {
             make.left.right.equalTo(view)
             make.bottom.equalTo(view.snp.bottomMargin)
         }
+        collectionView.delegate = self
+        collectionView.contentInset = UIEdgeInsets(top: 26, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = indexPath.item
+        let vc = GoodDetailTableViewController()
         
+        vc.model = self.collectionView.goodModels[row]
+        vc.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(vc)
     }
 
 }

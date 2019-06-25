@@ -15,6 +15,12 @@ class MeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nameLabel.text = UserModel.shared.isLogin() ? "登入用戶" : "遊客"
+        emailLabel.text = UserModel.shared.email
+        if UserModel.shared.isLogin() {
+            logoutBtn.setTitle("退出登入", for: .normal)
+        } else {
+            logoutBtn.setTitle("登入", for: .normal)
+        }
     }
     
     let nameLabel = UILabel()
@@ -24,6 +30,19 @@ class MeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let timer = Timer(timeInterval: 1, repeats: true) { _ in
+            self.nameLabel.text = UserModel.shared.isLogin() ? "登入用戶" : "遊客"
+            self.emailLabel.text = UserModel.shared.email
+            if UserModel.shared.isLogin() {
+                self.logoutBtn.setTitle("退出登入", for: .normal)
+            } else {
+                self.logoutBtn.setTitle("登入", for: .normal)
+            }
+        }
+        
+        RunLoop.current.add(timer, forMode: .default)
+        timer.fire()
 //        navigationController!.navigationBar.setColors(background: .clear, text: .white)
         navigationController!.navigationBar.setBackgroundImage(getGradientImage(width: width, height: 64), for: .default)
         let btn = UIButton()
@@ -90,7 +109,12 @@ class MeViewController: UIViewController {
         meTableView.tableFooterView = UIView()
         view.addSubview(meTableView)
         
-        logoutBtn.setTitle("退出登入", for: .normal)
+        if UserModel.shared.isLogin() {
+            logoutBtn.setTitle("退出登入", for: .normal)
+        } else {
+            logoutBtn.setTitle("登入", for: .normal)
+        }
+        
         logoutBtn.setTitleColor(.black, for: .normal)
         logoutBtn.backgroundColor = .white
         logoutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -115,11 +139,14 @@ class MeViewController: UIViewController {
                     SVProgressHUD.showInfo(withStatus: "登出成功")
                     self.nameLabel.text = UserModel.shared.isLogin() ? "登入用戶" : "遊客"
                     self.emailLabel.text = UserModel.shared.email
+                    self.logoutBtn.setTitle("登入", for: .normal)
                 }
                 controller.addAction(okAction)
                 let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
                 controller.addAction(cancelAction)
                 self.present(controller, animated: true, completion: nil)
+            } else {
+                LoginView.show()
             }
         })
     }

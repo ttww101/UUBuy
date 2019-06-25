@@ -26,7 +26,7 @@ class GoodCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(self.snp.width)
         }
         addSubview(label)
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.centerX.equalTo(self)
@@ -34,10 +34,12 @@ class GoodCollectionViewCell: UICollectionViewCell {
         }
         label.text = "Loading"
         
+        let iconSize: CGFloat = 12
+        
         addSubview(collectBtn)
         collectBtn.setImage(UIImage(named: "buy_slove"), for: .normal)
         collectBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 10, height: 10))
+            make.size.equalTo(CGSize(width: iconSize, height: iconSize))
             make.top.equalTo(label.snp.bottom).offset(2)
             make.left.equalTo(self)
         }
@@ -45,7 +47,7 @@ class GoodCollectionViewCell: UICollectionViewCell {
         addSubview(buyBtn)
         buyBtn.setImage(UIImage(named: "buy_scar"), for: .normal)
         buyBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 10, height: 10))
+            make.size.equalTo(CGSize(width: iconSize, height: iconSize))
             make.centerY.equalTo(collectBtn)
             make.right.equalTo(self)
         }
@@ -56,7 +58,7 @@ class GoodCollectionViewCell: UICollectionViewCell {
         addSubview(priceLabel)
         priceLabel.textColor = redColor
         priceLabel.textAlignment = .center
-        priceLabel.font = UIFont.systemFont(ofSize: 10)
+        priceLabel.font = UIFont.systemFont(ofSize: 12)
         priceLabel.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.centerX.equalTo(self)

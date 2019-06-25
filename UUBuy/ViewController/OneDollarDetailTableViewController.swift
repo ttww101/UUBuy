@@ -58,10 +58,10 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
         stepper.labelTextColor = .black
         stepper.labelBackgroundColor = .white
         
-        stepper.minimumValue = oneDollarModel!.currentBidPrice + 1
+        stepper.minimumValue = 1
         stepper.maximumValue = 9999
         stepper.stepValue    = 1
-        stepper.value = oneDollarModel!.currentBidPrice + 1
+        stepper.value = 1
         
         priceBtn.addSubview(stepper)
         stepper.snp.makeConstraints { (make) in
@@ -83,8 +83,8 @@ class OneDollarDetailTableViewController: GoodDetailTableViewController {
         
         bidBtn.rx.tap.subscribe(onNext: {
             if UserModel.shared.isLogin() {
-                self.stepper.value += 1
-                self.oneDollarModel?.currentBidPrice = self.stepper.value
+//                self.stepper.value += 1
+                self.oneDollarModel?.currentBidPrice += self.stepper.value
                 self.oneDollarModel?.bidUser = UserModel.shared
                 SVProgressHUD.showInfo(withStatus: "出價成功")
                 self.oneDollarModel?.extendDeadline()

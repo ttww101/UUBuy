@@ -33,7 +33,8 @@ class LoginView: UIView {
         loginView.snp.makeConstraints { (make) in
             make.width.equalTo(300)
             make.height.equalTo(320)
-            make.center.equalTo(window)
+            make.centerX.equalTo(window)
+            make.centerY.equalTo(window).offset(-90)
         }
     }
     
@@ -53,6 +54,20 @@ class LoginView: UIView {
         
         setup()
         
+    }
+    
+    @objc func doneWithNumberPad() {
+        UIApplication.shared.sendAction(#selector(resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
+    func textFieldToolBar() -> UIToolbar {
+        let textFieldToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        textFieldToolbar.barStyle = .default
+        textFieldToolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneWithNumberPad))]
+        textFieldToolbar.sizeToFit()
+        return textFieldToolbar
     }
     
     func setup() {
@@ -90,6 +105,7 @@ class LoginView: UIView {
             userNameTextField.placeholder = "请输入用户邮箱"
             userNameTextField.contentMode = .scaleAspectFit
             userNameTextField.font = UIFont.systemFont(ofSize: 12)
+            userNameTextField.inputAccessoryView = textFieldToolBar()
             addSubview(userNameTextField)
             userNameTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
@@ -111,6 +127,7 @@ class LoginView: UIView {
             passwordTextField.placeholder = "请输入密码"
             passwordTextField.font = UIFont.systemFont(ofSize: 12)
             passwordTextField.isSecureTextEntry = true
+            passwordTextField.inputAccessoryView = textFieldToolBar()
             addSubview(passwordTextField)
             passwordTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
@@ -177,6 +194,7 @@ class LoginView: UIView {
             userNameTextField.backgroundColor = grayColor
             userNameTextField.font = UIFont.systemFont(ofSize: 12)
             userNameTextField.textAlignment = .center
+            userNameTextField.inputAccessoryView = textFieldToolBar()
             addSubview(userNameTextField)
             userNameTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
@@ -192,6 +210,7 @@ class LoginView: UIView {
             passwordTextField.backgroundColor = grayColor
             passwordTextField.isSecureTextEntry = true
             passwordTextField.textAlignment = .center
+            passwordTextField.inputAccessoryView = textFieldToolBar()
             addSubview(passwordTextField)
             passwordTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
@@ -205,6 +224,7 @@ class LoginView: UIView {
             comfirmPasswordTextField.backgroundColor = grayColor
             comfirmPasswordTextField.isSecureTextEntry = true
             comfirmPasswordTextField.textAlignment = .center
+            comfirmPasswordTextField.inputAccessoryView = textFieldToolBar()
             addSubview(comfirmPasswordTextField)
             comfirmPasswordTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
@@ -217,7 +237,7 @@ class LoginView: UIView {
             addressTextField.font = UIFont.systemFont(ofSize: 12)
             addressTextField.backgroundColor = UIColor(hex: 0xFFE5C4)
             addressTextField.textAlignment = .center
-            addressTextField.inputAccessoryView = TextFieldHelper().textFieldToolBar()
+            addressTextField.inputAccessoryView = textFieldToolBar()
             addSubview(addressTextField)
             addressTextField.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)

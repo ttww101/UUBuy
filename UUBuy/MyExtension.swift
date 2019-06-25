@@ -64,7 +64,7 @@ class TextFieldHelper: UIResponder {
         textFieldToolbar.barStyle = .default
         textFieldToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Done", style: .plain, target: TextFieldHelper(), action: #selector(doneWithNumberPad))]
+            UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneWithNumberPad))]
         textFieldToolbar.sizeToFit()
         return textFieldToolbar
     }

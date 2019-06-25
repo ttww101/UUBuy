@@ -21,7 +21,7 @@ class HomeHeaderCollectionReusableView: UICollectionReusableView {
         decorationView.snp.makeConstraints { (make) in
             make.center.equalTo(self)
             make.width.equalTo(200)
-            make.height.equalTo(self).multipliedBy(0.8)
+            make.height.equalTo(24)
         }
         
         label.text = "明星单品"
@@ -43,10 +43,12 @@ class HomeHeaderCollectionReusableView: UICollectionReusableView {
         super.draw(rect)
         let orangeColor = UIColor(hex: 0xFFB046)
         let centerX = center.x
-        drawLine(startX: Int(centerX-40), toEndingX: Int(centerX-40-8), startingY: 10, toEndingY: 20, ofColor: orangeColor!, widthOfLine: 2, inView: self)
-        drawLine(startX: Int(centerX-50), toEndingX: Int(centerX-50-8), startingY: 10, toEndingY: 20, ofColor: orangeColor!, widthOfLine: 2, inView: self)
-        drawLine(startX: Int(centerX+60), toEndingX: Int(centerX+60-8), startingY: 10, toEndingY: 20, ofColor: orangeColor!, widthOfLine: 2, inView: self)
-        drawLine(startX: Int(centerX+50), toEndingX: Int(centerX+50-8), startingY: 10, toEndingY: 20, ofColor: orangeColor!, widthOfLine: 2, inView: self)
+        
+        let down: Int = 10
+        drawLine(startX: Int(centerX-40), toEndingX: Int(centerX-40-8), startingY: 10+down, toEndingY: 20+down, ofColor: orangeColor!, widthOfLine: 2, inView: self)
+        drawLine(startX: Int(centerX-50), toEndingX: Int(centerX-50-8), startingY: 10+down, toEndingY: 20+down, ofColor: orangeColor!, widthOfLine: 2, inView: self)
+        drawLine(startX: Int(centerX+60), toEndingX: Int(centerX+60-8), startingY: 10+down, toEndingY: 20+down, ofColor: orangeColor!, widthOfLine: 2, inView: self)
+        drawLine(startX: Int(centerX+50), toEndingX: Int(centerX+50-8), startingY: 10+down, toEndingY: 20+down, ofColor: orangeColor!, widthOfLine: 2, inView: self)
     }
     
     func drawLine(startX: Int, toEndingX endX: Int, startingY startY: Int, toEndingY endY: Int, ofColor lineColor: UIColor, widthOfLine lineWidth: CGFloat, inView view: UIView) {

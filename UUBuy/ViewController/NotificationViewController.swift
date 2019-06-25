@@ -113,7 +113,7 @@ class NotificationTableView : UITableView, UITableViewDelegate, UITableViewDataS
         let cell = dequeueReusableCell(withClass: NotifcationItemTableViewCell.self)
         
         cell.titleLabel.text = "最强活动说明"
-        cell.contentLabel.text = "今日下五"
+        cell.contentLabel.text = "今日下午超級特惠活動即將開始"
         cell.dateLabel.text = "2019_06_09"
         return cell
     }

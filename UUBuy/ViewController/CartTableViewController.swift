@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import SnappingStepper
+import SVProgressHUD
 
 class CartTableViewController: UITableViewController {
     
@@ -86,9 +87,13 @@ class CartTableViewController: UITableViewController {
             make.width.equalTo(100)
         }
         btn.rx.tap.subscribe(onNext: {
-            let vc = PayViewController()
-            vc.sum = CartModel.shared.total()
-            self.navigationController?.pushViewController(vc)
+            if CartModel.shared.total() == 0 {
+                SVProgressHUD.showError(withStatus: "購物車為空")
+            } else {
+                let vc = PayViewController()
+                vc.sum = CartModel.shared.total()
+                self.navigationController?.pushViewController(vc)
+            }
         })
         
         tableView.contentInset = UIEdgeInsets(top: 26, left: 0, bottom: 50, right: 0)

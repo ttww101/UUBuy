@@ -17,7 +17,7 @@ class NotifcationItemTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         titleLabel.text = ""
-        titleLabel.font = UIFont.systemFont(ofSize: 13)
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = .black
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
@@ -27,7 +27,7 @@ class NotifcationItemTableViewCell: UITableViewCell {
         }
         
         contentLabel.text = ""
-        contentLabel.font = UIFont.systemFont(ofSize: 11)
+        contentLabel.font = UIFont.systemFont(ofSize: 14)
         contentLabel.textColor = .gray
         addSubview(contentLabel)
         contentLabel.snp.makeConstraints { (make) in
@@ -38,7 +38,7 @@ class NotifcationItemTableViewCell: UITableViewCell {
         }
         
         dateLabel.text = ""
-        dateLabel.font = UIFont.systemFont(ofSize: 10)
+        dateLabel.font = UIFont.systemFont(ofSize: 12)
         dateLabel.textColor = UIColor(hex: 0xEE4835)
         dateLabel.textAlignment = .right
         addSubview(dateLabel)

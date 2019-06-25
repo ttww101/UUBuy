@@ -45,7 +45,7 @@ class GoodDetailTableViewController: UITableViewController {
         tableView.register(cellWithClass: DetailImgCell.self)
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
-        
+
         addToCartBtn.setTitle("加入购物车", for: .normal)
         addToCartBtn.setTitleColor(.white, for: .normal)
         addToCartBtn.backgroundColor = .gray

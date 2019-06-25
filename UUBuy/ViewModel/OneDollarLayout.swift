@@ -23,7 +23,7 @@ class OneDollarLayout: UICollectionViewFlowLayout {
         let attrs = UICollectionViewLayoutAttributes(forDecorationViewOfKind: "decorationView", with: indexPath)
         if elementKind == "decorationView" {
             if section == 0 {
-                attrs.frame = CGRect(x: 5, y: 40, width: width - 5 * 2, height: 130)
+                attrs.frame = CGRect(x: 5, y: 50, width: width - 5 * 2, height: 160)
             } else {
                 attrs.frame = CGRect(x: 5, y: 470, width: width - 5 * 2, height: 240)
             }
@@ -44,7 +44,7 @@ class OneDollarLayout: UICollectionViewFlowLayout {
         }
         
         let decorationAttrs1 = layoutAttributesForDecorationView(ofKind: "decorationView", at: IndexPath(item: 0, section: 1))
-        decorationAttrs1?.frame = CGRect(x: 5, y: 230, width: width - 5 * 2, height: 250*4)
+        decorationAttrs1?.frame = CGRect(x: 5, y: 260, width: width - 5 * 2, height: 265*4)
         if let decorationAttrs1 = decorationAttrs1 {
             if rect.intersects(decorationAttrs1.frame) {
                 attrs.append(decorationAttrs1)

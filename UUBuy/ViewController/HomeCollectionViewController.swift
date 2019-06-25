@@ -77,17 +77,21 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let item = indexPath.item
         let id = goodIds[item]
         
-        cell.buyBtn.rx.tap.subscribe(onNext:{
-            if let good = self.goodModels[item] {
-                CartModel.shared.addGood(good: good)
-                SVProgressHUD.showInfo(withStatus: "加入成功")
-            }
-        })
+//        cell.buyBtn.rx.tap.subscribe(onNext:{
+//            if let good = self.goodModels[item] {
+//                CartModel.shared.addGood(good: good)
+//                SVProgressHUD.showInfo(withStatus: "加入成功")
+//            }
+//        })
         
         cell.collectBtn.rx.tap.subscribe(onNext:{
-            if let good = self.goodModels[item] {
-                CollectionModel.shared.addGood(good: good)
-                SVProgressHUD.showInfo(withStatus: "加入成功")
+            if UserModel.shared.isLogin() {
+                if let good = self.goodModels[item] {
+                    CollectionModel.shared.addGood(good: good)
+                    SVProgressHUD.showInfo(withStatus: "加入成功")
+                }
+            } else {
+                LoginView.show()
             }
         })
         
@@ -125,10 +129,11 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize.zero
         if section == 0 {
             return CGSize.zero
         }
-        return CGSize(width: width, height: 30)
+        return CGSize(width: width, height: 50)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -150,7 +155,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section != 0 {
-            return UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
+            return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         } else {
             return UIEdgeInsets.zero
         }

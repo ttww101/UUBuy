@@ -30,13 +30,16 @@ class MeTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let row = indexPath.row
         let buyListViewController = BuyListViewController()
         buyListViewController.navigationItem.title = titles[row]
+        let navTitle = titles[row]
         if row == 0 {
+            buyListViewController.navTitle = navTitle
             buyListViewController.goodModels = CartModel.shared.goodModels
         } else if row == 1 {
             let vc = OneDollarBidListViewController()
             self.nav?.pushViewController(vc)
             return
         } else if row == 2 {
+            buyListViewController.navTitle = navTitle
             buyListViewController.goodModels = CollectionModel.shared.goodModels
         } else if row == 3 {
             let vc = ReceiveRedEnvelopesViewController()
